@@ -14,7 +14,7 @@ R: React
 N: Node JS
 
 Network - A system where many resources are interconnected and can share their resources between each other is called a network.
-Internet - Gloabal system where all the systems / machines are interconnected. Network of networks.
+Internet - Gloabal system where all the systems / machines are interconnected. Network of networks. Interconnected networks.
 IP Address - A unique address of a machine on the internet.
 
 Browser Engine:
@@ -29,5 +29,73 @@ We access the internet through our ISP (Internet Service Provider). So in realit
 Packets: A large file is broken down into smaller chunks called packets, and then the packets are broken and sent over to the destination IP using sequence numbering process and then at the destination machine they are rejoined again to form the larger file.
 
 
-PROTOCOL STACK 
+## PROTOCOL STACK 
+
+Protocol - set of rules
+Gmail sends mails using the SMTP (Simple Mail Transfer Protocol). 
+
+TCP layer - Defines the port number of the application of the receiver / destination machine with which we have to interact to send the message / resource.
+IP layer - Adds the IP address of the receiver / destination machine to the request
+
+Source Machine                                                     Destination Machine
+Application -> TCP Layer -> IP Layer -> Harware ---> Internet ---> Hardware -> IP Layer -> TCP Layer -> Application.
+
+The DNS hierarchy has 4 levels:
+Root (.) — the very top, represented by a dot. There are only 13 root server clusters in the world (operated by organizations like ICANN, NASA, etc.). Every DNS lookup starts here if the answer isn't cached.
+TLD (Top-Level Domain) — the part after the last dot. Two main types:
+
+Generic TLDs → .com, .org, .net, .edu
+Country code TLDs (ccTLDs) → .uk, .de, .jp, .in
+
+SLD (Second-Level Domain) — the name you register. google, amazon, wikipedia — this is what you pay for at a registrar like GoDaddy or Namecheap.
+Subdomains — prefixes you create yourself for free. www, mail, api, docs — these are just DNS records you add under your domain.
+
+>>> nslookup google.com
+Server:         68.105.28.11
+Address:        68.105.28.11#53
+
+Non-authoritative answer:
+Name:   google.com
+Address: 142.251.181.102
+Name:   google.com
+Address: 142.251.181.138
+Name:   google.com
+Address: 142.251.181.113
+Name:   google.com
+Address: 142.251.181.101
+Name:   google.com
+Address: 142.251.181.100
+Name:   google.com
+Address: 142.251.181.139
+
+>>> dig google.com
+
+; <<>> DiG 9.10.6 <<>> google.com
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 25193
+;; flags: qr rd ra; QUERY: 1, ANSWER: 6, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 512
+;; QUESTION SECTION:
+;google.com.                    IN      A
+
+;; ANSWER SECTION:
+google.com.             97      IN      A       172.217.75.100
+google.com.             97      IN      A       172.217.75.139
+google.com.             97      IN      A       172.217.75.101
+google.com.             97      IN      A       172.217.75.102
+google.com.             97      IN      A       172.217.75.138
+google.com.             97      IN      A       172.217.75.113
+
+;; Query time: 9 msec
+;; SERVER: 68.105.28.11#53(68.105.28.11)
+;; WHEN: Thu May 14 21:10:53 MST 2026
+;; MSG SIZE  rcvd: 135
+
+HTML helps us define a structure for example we define what is on the website for example a paragraph, an image, a table or a link etc. Main job is labelling. Gives the skeleton to a website.
+CSS helps us with styling and appearance related stuff.
+JS is the brain and usually has the logic.
+
 
