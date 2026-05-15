@@ -1,0 +1,33 @@
+Web is a system where many documents and files are interconnected and they can be accessed via internet. Web is a subset of internet. 
+Website - combination of webpages with static content. Read only generally. user interaction is usually minimal.
+Web applications are dynamic in nature like LinkedIn, when we refresh we get new content, same content is never shown in contrast to dynamic pages like wikipedia where same content is shown at any time on any device. user can interact with your application. 
+
+Web application has various layers:
+1. Frontend / UI can be created using HTML / CSS / JS + React
+2. Backend -> Node JS 
+3. Database layer -> NoSQL (Mongo DB) / SQL 
+
+In this course we are using MERN stack:
+M: Mongo DB
+E: Express JS
+R: React
+N: Node JS
+
+Network - A system where many resources are interconnected and can share their resources between each other is called a network.
+Internet - Gloabal system where all the systems / machines are interconnected. Network of networks.
+IP Address - A unique address of a machine on the internet.
+
+Browser Engine:
+
+Types of requests: GET, POST, PUT, DELETE
+Types of servers: DB server, file server, email server, app server, web server etc
+
+On the internet everything is connected via the IP address as it is the address of that machine on the internet. So if we type www.apple.com on a browser, we are not accessing the IP address of apple, therefore there is a layer in between called DNS Server and the DNS (Domain Name System) server converts the domain name i.e. apple to IP Address, this process is called DNR Domain Name Resolution.
+
+We access the internet through our ISP (Internet Service Provider). So in reality we dont directly send request to apple.com, inturn, we send request to our ISP and ISP then further requests data from apple.com and returns response to our machine. ISP provides us the IP address to work on the internet.
+
+Packets: A large file is broken down into smaller chunks called packets, and then the packets are broken and sent over to the destination IP using sequence numbering process and then at the destination machine they are rejoined again to form the larger file.
+
+
+PROTOCOL STACK 
+
