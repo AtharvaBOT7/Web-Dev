@@ -9,3 +9,7 @@ tfoot: summarization inside a table at the end
 tr: to create a row inside a Table
 td: actual cell inside a table
 
+we also use rowspan and colspan to extend the rows and columns to take up spaces of multiple rows or columns respectively.
+
+rowspan extends horizontally like eats up spaces in the same row.
+colspan extends vertically, eats up space in the same column.

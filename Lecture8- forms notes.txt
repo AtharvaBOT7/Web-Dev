@@ -1,0 +1,25 @@
+Forms are a structured way to collect information from the user input.
+
+we use the <form> tag to create forms in html for user input.
+
+then we have <input> tag and we can display this in multiple ways. Whenever we use the input tag, we must specify the type attribute to denote what type of data it is taking as input. Available types are radio, date, text (default), checkbox, submit etc.
+**** When we want to access the data from these input fields, we have the id attribute inside the input tag. every id must and must be unique across the webpage. We will also give names to the input tag so that we know which input tag we are referring to, good practice.
+*** when we have type="submit", the data present inside the form will be submitted somewhere. Type submit will create a submit button for the entire form.
+There are 2 ways to submit the data present in the form to a source, one is the submit tye and other is the action attribute inside the form tag itself which appears by default.
+
+Then we have <label> tag which labels the type of input that field is taking for example password or login information etc. This also appears in screen reader ie when someone tries to read the content available on the sreen. ** Every label tag has a for="" attribute which must be filled and the id of the for attribute must always be equal to the id of the input field so that we know what it matches.
+This means label's for and input's id attributes must have the same values. This means even if we click on the actual input type or the label, it will select the option.
+
+We have the placeholder attribute inside the input tag.
+
+Other Form Element:
+- input
+- label
+- select
+- option
+- button
+- textarea
+- fieldset
+- legend
+
+For radio buttons, if we have the same name for different radio buttons then we will be able to select only one of the values.
