@@ -23,3 +23,5 @@ Other Form Element:
 - legend
 
 For radio buttons, if we have the same name for different radio buttons then we will be able to select only one of the values.
+
+Every id attached to an element must be unique.
