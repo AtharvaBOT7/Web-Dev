@@ -25,3 +25,6 @@ Other Form Element:
 For radio buttons, if we have the same name for different radio buttons then we will be able to select only one of the values.
 
 Every id attached to an element must be unique.
+
+We also have a tag called <details>, this tag enables us to have frequently asked questions, like when we tap on the question, answer appears and when we tap again the answer disappears.
+
