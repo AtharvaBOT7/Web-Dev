@@ -1,0 +1,17 @@
+Emmet - Using shortcuts, we can generate full HTML code without much efforts. Available by default in VS code.
+
+we use the > to nest tags in between for example p>p>p will generate:
+ <p>
+        <p>
+            <p></p>
+        </p>
+    </p>
+
+id attribute is used to uniquely identitfy an element.
+mulitple elements can exist in one class.
+
+Suppose we have 4 p tags in a class and we wish to change the back ground colour of all, then the best option would be to have them in the same class and then change the background colour of the class to change the bg colour of all the paras.
+
+If we type in p#para1 then this emmet will create this code and it will assign the id = "para1" to that p tag: <p id="para1"></p>
+
+Similarly, if we want to define the class, we use the emmet p.para, then it will create this code snippet:  <p class="para"></p>

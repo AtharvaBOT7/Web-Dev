@@ -97,5 +97,3 @@ google.com.             97      IN      A       172.217.75.113
 HTML helps us define a structure for example we define what is on the website for example a paragraph, an image, a table or a link etc. Main job is labelling. Gives the skeleton to a website.
 CSS helps us with styling and appearance related stuff.
 JS is the brain and usually has the logic.
-
-
