@@ -95,3 +95,21 @@ Tag is a markup entity using which we can provide semantics (meaning), structure
 - Self-closing tags don't need a closing tag: `<br>`, `<hr>`, `<img>`, `<input>`, `<meta>`, `<link>`
 - Attributes go inside the opening tag: `<a href="url" class="btn">`
 - `id` = unique identifier, `class` = reusable style group
+
+
+
+Notes about div tag:
+it is a generic non semantic tag and it is used to create division. Usually used for wrapping or as a container.
+For example if we want to wrap a very long code inside a container then we just use the div tag to wrap it.
+
+Block element: 
+- these are that type of elements that always occur on the next line.
+- By default they use up all the space from left to right.
+
+Inline element:
+- do not occur on a next line.
+- By default take only the space needed by the content not all the space.
+
+
+if we have an attribute called display: inline, then a block element will behave as an inline element.
+
