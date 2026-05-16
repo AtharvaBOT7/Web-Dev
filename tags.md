@@ -1,5 +1,5 @@
 Tag is a markup entity using which we can provide semantics (meaning), structure or format our content.
-<br> is a self closing tag.
+<br/> is a self closing tag.
 
 # HTML Tags Reference
 
