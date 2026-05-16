@@ -1,0 +1,11 @@
+Table - basic arrangement of rows and cols. 
+
+We have various tags available inside a table like table, tr, td, thead, tfoot, tbody
+
+thead: the headings of the table like the name of the column like, name Sr. No, salary etc
+th: used to define the headings
+tbody: the actual body which gives us some kind of information.
+tfoot: summarization inside a table at the end
+tr: to create a row inside a Table
+td: actual cell inside a table
+
