@@ -1,0 +1,13 @@
+Added comments about the different properties. 
+
+THE BOX MODEL:
+The CSS Box Model is how the browser sees every single HTML element — it treats each element as a rectangular box made up of 4 layers.
+
+1. Margin — the space outside the border. It pushes the element away from other elements. It's transparent (you can't give it a background color).
+2. Border — the visible line that wraps around the padding and content. Can have color, width, and style.
+3. Padding — the space inside the border, between the border and the content. Unlike margin, it inherits the element's background color.
+4. Content — the actual stuff inside the element: text, images, etc. This is what width and height apply to by default.
+
+Content will render inside a rectangular box, no matter what the shape or size of the content.
+
+We also have other type of selector called the universal selector and whatever we define inside the universal selector will be applied everywhere and to all the tags. It is denoted using   *{ property: value }.
