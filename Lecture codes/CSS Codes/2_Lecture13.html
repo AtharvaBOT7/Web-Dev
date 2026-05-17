@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Lecture13.css">
+    <title>CSS Learning</title>
+
+    <!-- Internal CSS Element Selector -->
+    <style>
+        p{
+            background-color: black;
+        }
+
+        /* This is ID selector in Internal CSS */
+        /* Remember we use # for ID selection. */
+        #article1{
+            background-color: aquamarine;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            font-size: xx-large;
+        }
+
+        /* This is class selector in Internal CSS */
+        /* Remember we use . for Class selection. */
+        .paraClass{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: blue;
+            background-color: aqua;
+        }
+
+        /* Group Selector in Internal CSS */
+
+        p,article{
+            width: 100px;
+            height: 200px;
+        }
+
+        /* If we have assigned several elements with the same class, then we can access just one of the elements using: */
+        p.paraClass{
+
+        }
+        /* This will style only the paragraph tags with the class paraClass and not sections or articles present inside the same class.  */
+        
+    </style>
+</head>
+<body>
+
+    <h1>Hello I am Atharva</h1>
+
+    <p class="paraClass">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur mollitia officiis reprehenderit consectetur? Porro unde harum impedit, consectetur mollitia dicta aliquam animi quisquam totam aspernatur ipsum quas qui, fugit maxime. Ab natus beatae quibusdam vel. Ab officia ex perferendis fugiat culpa adipisci, nemo id, sit repellat, accusamus quaerat beatae rem.</p>
+
+    <article id="article1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga, velit expedita porro commodi minus voluptate reiciendis nulla cumque soluta qui blanditiis aut ab tenetur aperiam iure temporibus sit officiis consequuntur eum dolore ipsam enim autem animi. Nostrum reiciendis officia voluptatibus totam accusantium cupiditate eaque in saepe, odio eos numquam ad nemo ducimus veniam inventore doloremque accusamus fuga libero itaque error?</article>
+
+    <p class="paraClass">I am Atharva</p>
+
+    <p class="paraClass"> I am inside the class paraClass</p>
+
+    <footer>Thanks! Bye!</footer>
+    
+</body>
+</html>

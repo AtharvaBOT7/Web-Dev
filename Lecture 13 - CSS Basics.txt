@@ -1,0 +1,100 @@
+CSS - Cascading style sheets
+
+HTML provides our webpage:
+- a skeleton 
+- a structure
+- adds semantics
+- adds description
+
+CSS helps in providing styling / an intuitive appearance to our webpage.
+
+CSS depends on these 4 important factors, the 4 factors are called CSS cascade, it is the algorithm the browser uses to decide which CSS rule wins when there's a conflict.
+
+1. Position / Order
+The rule that comes last in the code wins if everything else is equal:
+p { color: red; }
+p { color: blue; } /* this wins — it comes last */
+
+2. Specificity
+How specific your selector is. More specific = higher priority:
+p { color: red; }          /* least specific */
+.para { color: blue; }     /* more specific */
+#main { color: green; }    /* even more specific */
+
+General order: element < class < id < inline style
+
+3.  Using !important overrides everything:
+p { color: red !important; } /* this wins no matter what */
+p { color: blue; }
+
+Avoid using !important too much — it's considered bad practice.
+
+4. Source / Origin, Where the CSS is coming from:
+Browser default styles
+    ↓
+External / User stylesheets
+    ↓
+Author stylesheets (your CSS)  ← highest priority
+
+Browser defaults → External CSS → Internal CSS → Inline CSS → !important
+
+
+We can add Inline CSS, Internal CSS and External CSS.
+
+INline CSS means we use the style attribute inside our HTML file to make changes to the appearance.
+Example: <p style="background-color: red;">Lorem ipsus praesentium commodi et repudiand?</p>
+INline CSS will always appear inside the body tag of the HTML code.
+
+Internal CSS will be used inside the head tag of the HTML file and it is used something like this:
+    <!-- Internal CSS -->
+    <style>
+        h1{
+            color: darkblue;
+        }
+    </style>
+This will change the color of every H1 tag to dark blue. 
+
+here the syntax is as follows h1{ color: blue; } here h1 is called the selector (depicts the property we are trying to select), color is called property and blue is called value. Property value pair. 
+
+Now we added another property for paragraph in the style tag in head:
+p{
+            background-color: blueviolet;
+        }
+
+now we already had the inline CSS for one of the paragraph tags, but others did not have a defined background color so for the last 2 paragraphs, the background color will be blueviolet but for the first paragraph as we had defined in inline css that background color must be red, it will be red. 
+Priority: Inline CSS > Internal CSS.
+But if we add !important to the internal CSS, then we will have blueviolet color for all the p tags.
+
+NOW THERE ARE 2 MAIN STEPS TO CREATING AN EXTERNAL CSS:
+1. Create the CSS file.
+2. Link the CSS file to the HTML file.
+
+Now to link the CSS file, we must use the link:css tag inside the head tag of the HTML code.
+
+
+Now we also added a paragraph tag inside the external CSS file:
+p{
+    background-color: brown;
+}
+and now we have:
+
+Inline CSS:  <p style="background-color: red;">Lorem50 <p/> 
+
+Internal CSS: p{ background-color: blueviolet; }
+
+External CSS: p{ background-color: brown; }
+
+Then always for that p tag which has inline CSS defined, we will see background color as red and for the other p tags, we will see blueviolet background color. 
+
+It also depends on the order for example: 
+
+If we dont have inline CSS, as inline css is the closest to the p tag, it will always take priority if we dont have the !important tag and if we define Internal CSS first and External CSS after, then we will have the tags respond to the external CSS styling but if we have external css linked first and then internal css, then styling will be according to internal CSS, it means that the latest definition overrides the previous definition.
+
+Selectors in CSS are a way which help us target an element in HTML to apply CSS styling.
+
+Different types of selectors:
+1. Element selector (like we did, we defined p tag and tried to make edits inside the lecture13.css code to the p tag) basicially use the name of the tag and style it.
+2. id selector
+3. class selector
+4. group selector
+
