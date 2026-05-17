@@ -34,4 +34,18 @@ If we define this at the top:
 and have this defined in the actual Work Experience section:
 <h2 id="work">Work Experience</h2>
 
+****** We always access the id of an element using # symbol and we access the class element using . symbol. ******
+
 Then after clicking the Work Experience button at the top, it will scroll the page down to the actual work experience section on the page.
+
+To add an image, we use the <img> tag.
+Adding a loading="lazy" attribute in the image tag means that the browser will load the image only when the image is about to come in the user's viewport and not when the page loads, it increases the page load speed.
+
+We can add an audio file in HTML webpage using the <audio> tag and we have a special attribute inside the audio tag called controls, without defining controls attribute, the audio file will never be visible on the webpage.
+
+Similar is the case with video tag, we will need controls special attribute to play / pause / fast forward the video and audio controls.
+
+iframe: Inline Frame element, it is used to attach external links like webpages / videos on a webpage. Basically used to show an external document on your current webpage.
+
+So when we have external YT link inside an iframe, youtube will refuse to connect, https://www.youtube.com/watch?v=eacDqj2C-IA this is the usual link but inside an iframe we will have to replace watch keyword with embed because we are embedding that video inside our iframe. And other thing is to remove the ?v= part as well. So the link we will input inside our src tag will be https://www.youtube.com/embed/eacDqj2C-IA
+
