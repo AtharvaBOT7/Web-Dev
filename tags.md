@@ -105,10 +105,14 @@ For example if we want to wrap a very long code inside a container then we just 
 Block element: 
 - these are that type of elements that always occur on the next line.
 - By default they use up all the space from left to right.
+- they respect custom width and height sizing.
+- we can apply margin and padding in all the 4 directions.
 
 Inline element:
 - do not occur on a next line.
 - By default take only the space needed by the content not all the space.
+- do not respect custom height and width sizing.
+- margin and padding can be applied only in horizontal direction and cannot be applied in vertical direction.
 
 
 if we have an attribute called display: inline, then a block element will behave as an inline element.

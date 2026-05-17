@@ -1,0 +1,22 @@
+Every element in HTML has a different display property like how it shows up on the screen and how it renders.
+
+So using display property, we decide how an element must be rendered on a viewport.
+
+Without border-box property, the actual size of our box will increase but if we specify box-sizing: border-box, then we will decrease the size of the content to keep the size of the box the same.
+
+Block element: 
+- these are that type of elements that always occur on the next line.
+- By default they use up all the space from left to right.
+- they respect custom width and height sizing.
+- we can apply margin and padding in all the 4 directions.
+
+Inline element:
+- do not occur on a next line.
+- By default take only the space needed by the content not all the space.
+- do not respect custom height and width sizing.
+- margin and padding can be applied only in horizontal direction and cannot be applied in vertical direction.
+
+
+if we have an attribute called display: inline, then a block element will behave as an inline element.
+
+We also have a property called inline-block which means that the element will behave as an inline element but we can apply custom properties on all 4 directions.
