@@ -28,3 +28,10 @@ Every id attached to an element must be unique.
 
 We also have a tag called <details>, this tag enables us to have frequently asked questions, like when we tap on the question, answer appears and when we tap again the answer disappears.
 
+If we define this at the top:
+<a href="#work">Work Experience</a> <br>
+
+and have this defined in the actual Work Experience section:
+<h2 id="work">Work Experience</h2>
+
+Then after clicking the Work Experience button at the top, it will scroll the page down to the actual work experience section on the page.
