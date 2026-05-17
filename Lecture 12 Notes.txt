@@ -1,0 +1,8 @@
+The icon present to the left of the title in a browser tab is called the Favicon.
+
+The below code is used to link the current html webpage to a CSS file, we usually handle the styling of the page using CSS:
+<link rel="stylesheet" href="style.css">
+
+The below code is used to link the current html webpage to a JS script:
+<script src="script.js"></script>
+
