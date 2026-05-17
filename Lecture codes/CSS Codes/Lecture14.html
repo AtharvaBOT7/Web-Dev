@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- This way we can import external font into our html webpage. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+GB+J+Guides:ital@0;1&display=swap" rel="stylesheet">
+
+    <style>
+        p{
+            font-family: "Playwrite GB J Guides", cursive;
+            font-style: italic;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 30px;
+        }
+
+        /* To add colours, we have 4 different ways: name the colour, rgb, hex and hsl */
+        #firstp{
+            color: green;
+            background-color: yellow;
+        }
+
+        #secondp{
+            color: rgb(215, 60, 176);
+            /* background-color: rgb(177, 179, 229); */
+
+            /* The 4th parameter in the rgba value is the alpha value and it decides the transperancy of the color, having a high value means darker.  */
+            background-color: rgba(85, 149, 74, 0.33);
+        }
+
+        .firstc{
+
+            /* We have 6 letters in the hex composition and the first 2 characters denote red colour, the next 2 denote green and the last two denote blue */
+            /* background-color: #47b5b0; */
+
+            /* We can also set the transperancy using the hex values, the last two digits after blue will be for alpha value */
+            background-color: #47b5b0cc;
+        }
+
+        #fourthp{
+            /* background-color: hsl(137, 57%, 50%); */
+            background-color: hsla(189, 70%, 51%, 0.717);
+            /* Similar to rgb and hex */
+        }
+        
+    </style>
+
+
+</head>
+<body>
+
+    <h2>Hello I am learning CSS</h2>
+
+    <p id="firstp">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id, minus itaque iusto mollitia beatae deleniti veritatis molestias sint laboriosam, voluptatibus ratione, odio officiis sunt ea. Optio autem dolorum laboriosam eos.</p>
+
+    <p id="secondp">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse hic neque quibusdam. Ipsum magnam atque, hic minus, tempora accusantium aperiam pariatur consectetur cum, blanditiis in deserunt neque! Repudiandae voluptatum libero quas fuga rerum dolorem, similique ratione, modi delectus, unde officia vel cupiditate neque possimus molestias. Id veniam tempore inventore mollitia!</p>
+
+    <p class="firstc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus provident neque consectetur voluptate labore, sunt cupiditate facere quos eveniet quaerat reiciendis atque repellendus. Corporis ipsum inventore ipsam earum quia adipisci excepturi non consequuntur quis, sapiente fugiat, nihil explicabo nostrum libero.</p>
+
+    <p id="fourthp">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam atque blanditiis officia modi soluta, eligendi ad impedit doloremque doloribus quas!</p>
+    
+</body>
+</html>
