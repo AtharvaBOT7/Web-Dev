@@ -1,0 +1,19 @@
+We have different types of units:
+- Absolute (example 1 cm, it will always be same no matter what device) cm, px, mm, in etc
+- Relative (this is dependent on some external factor) (suppose we have a parent class and we set the size to 50%, then it will be dependent on parent size)
+
+We will learn about different size units in CSS:
+we have:
+- px
+- %
+- viewport width
+- viewport height
+- rem
+- em
+
+Physical pixel is 1/96 of an inch it means 0.26mm.
+Relative units are em and rem.
+
+em unit means, for example we have set parent class font-size as 10px and we have a child class and we set the font-size of the child class as 10em, then the font size of the child class will be 10 * 10px because the parent's font-size was set to 10px, basically we just multiply the sizes for different attributes when we use em unit.
+
+rem unit is same as em but here instead of the parent, it is relative to the root element size, it means the HTML tag. By default the configuration of HTML tag is 16px.
