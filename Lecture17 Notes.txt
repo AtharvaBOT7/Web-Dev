@@ -1,0 +1,22 @@
+Positioning properties in CSS, using these properties we will define how to position an element on the viewport. 
+
+Different properties are static, relative, absolutefixed, sticky etc etc
+By default static positioning property is applied.
+For example we can also define if we want to overlap certain elements place after the other element etc etc.
+
+We use these properties under the following circumstance: We have 4 images and want to position them.
+
+Relative Postiioning:
+When we set position: relative, then we are working with the current window in mind and we have the following 4 porperties: top, left, right, botto and we can space the element using these 4 properties. If we try to place the element elsewhere, the gap left behind by the element will be maintained.
+
+Absolute Positioning:
+Whenever we want to overlap an image on top of other image, we use absolute positioning. 
+Gap is not maintained when we absolute positioning, the next element overlaps the previous element.
+The position is relative to its closest positioned ancestor. Best practice is to have the closest positioned ancestor have relative position if we are usign absolute positioning on an element inside.
+
+Fixed Positioning:
+Whenever we use fixed positioning, the image will remain intact, it means if we scroll, the image will not move, it will always be present in the same position. This behaviour is shown across the webpage and not just the parent container / class.
+
+Sticky Positioning:
+This also behaves as fixed but it is only fixed in the parent container / class only and does not work in other container / class.
+
