@@ -1,0 +1,59 @@
+Flexbox means flexible box, it is a type of 1D layout method in one dimension.
+
+We have a flex container which is the parent container and inside the container we have various child items called flex items. 
+By default, the horizontal axis is called the main axis and vertical axis is known as cross axis.
+
+To convert any element to a flexbox, we simply modify the display property to flex, display: flex; and this will automatically make the items present inside that as flex items. 
+
+Whenever we create a flex box, by default the display property will be row and we have a property called flex-direction: column if we set it to column it will reset itself to rendering in column format.
+
+Flex -> By default direction ROW.
+
+We create responsive designs using flexbox, that means if we inspect and change the dimension, then the dimensions of the flex container and the flex items will change accordingly.
+
+We also have a property flex-wrap and if we set flex-wrap: wrap, and set the dimension as 200pxX200px, then the flex items will only be of 200px and if there is no space on the same line, then they will push themselves to the next line and this will occur until every item has space, once we squeeze it more, the boxes' sizes will start changing accordingly.
+
+we also have a property called wrap-reverse and if we apply that property, then instead of pushing the right most item to the next line, we will push the left most item up a line or push the other right most objects to the next line.
+
+flex-flow is a property we use to combine the wrap and direction properties. 
+The below code:
+.container {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+will be written as:
+.container {
+  flex-flow: row wrap;
+}
+
+if flex container is aligned with row, then the main axis is horizontal and if it is aligned with column, then the main axis is vertical.
+Justify content is a property which helps us place items according to the main axis.
+If we have histify-content: center; then the items inside will be placed at the center of the main axis.
+We also have start and end and we also have space-between.
+
+we also have one more property called align-items, which helps us place items according to the cross axis. Therefore by using justify content and align items, we will be able to 2 dimensionally place items.
+
+Algin content is a property which will help us handle the spaces inbetween the items when we use align items and justify content.
+
+All these above properties are properties of the flex container i.e the parent box.
+
+THE BELOW properties are for flex items:
+1. Order property, using the order property, we can put the items in a sequence, higher the number, to the right it will show.
+2. We also have properties like flex-shrink and flex-grow, this will denote by how much multiple will the box item shrink or grow when compared to the other items in the flex container. If we set the Flex grow property to all the items, the items will take up all the space width wise that is present in the parent flex container. Shorthand notation is flex: flex-grow flex-shrink flex-basis (flex-basis helps us set the dimension size.)
+
+Summary:
+1. Flex-item:
+- order
+- flex-grow
+- flex-shrink
+- flex-basis 
+- align-self
+
+2. Flex-container:
+- display
+- flex-direction
+- flex-wrap
+- flex-flow
+- align-items
+- justify-content
+- align-content
