@@ -1,0 +1,4 @@
+When a particular component shifts from style 1 to style 2, it is animated.
+
+We save the rules about the animations like shifting the object from one style to other style inside keyframes.
+
