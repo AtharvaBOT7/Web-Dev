@@ -1,0 +1,12 @@
+The same website renders differently on different aspect ratio devices.
+
+Media query is a tool to define the placement of your elements on different screen sizes without breaking.
+We basically render different CSS files for different screen sizes, we usually define the screen sizes as XS, S, Med, Lg, X-Lg. Here the sizes are attached to some fixed number of pixel sizes / density ie small may be 400px and xl may be 2000px something like that.
+Media query ek aisa tool hai jiski help se apan decide kar sakte hai ki kaise display pe apni website kaise render hogi, matlab bade display pe kaisi hogi aur chote display pe kaisi hogi vaise.
+
+Therefore using media queries, we can apply different styling to the same webpage on different screen sizes.
+
+Therefore according to the display sizes, we can render different CSS styling files, then we do this using media queries.
+
+We apply the media queries using @media tag.
+

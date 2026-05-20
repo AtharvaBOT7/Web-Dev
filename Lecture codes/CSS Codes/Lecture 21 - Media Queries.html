@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    /* .box{
+        background-color: aquamarine;
+        height: 500px;
+        width: 500px;
+        border: solid 4px red;
+    }
+    /* @media (min-width: 500px){
+        /* This min-width means that unless my minimum width is not 500px px, the colour of my box class will remain pink, when it becomes less than 500px, it shifts to the default configuration ie red colour.
+        .box{
+            background-color: pink;
+        }
+    } 
+         @media (min-width: 200px) and (max-width: 500px){
+        .box{
+            background-color: pink;
+        }
+    } */
+
+    .container{
+            background-color: beige;
+            border: 5px solid darkcyan;
+            margin: 2px;
+            padding: 2px;
+            display: flex;
+            /* flex-wrap: wrap; */
+            height: 500px;
+            justify-content: center;
+            align-content: center;
+        }
+        .box{
+            height: 200px;
+            width: 200px;
+            border: 2px dotted darkgoldenrod;
+            margin: 2px;
+            padding: 2px;
+        }
+        #box1{
+            background-color: red;
+        }
+        #box2{
+            background-color: blue;
+        }
+        #box3{
+            background-color: green;
+        }
+        #box4{
+            background-color: yellow;
+        }
+        @media (min-width: 640px){
+            .container{
+                flex-direction: column;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    
+    <!-- <div class="box">
+        Hello there
+    </div> -->
+
+    <div class="container">
+        <div class="box" id="box1">BOX 1</div>
+        <div class="box" id="box2">BOX 2</div>
+        <div class="box" id="box3">BOX 3</div>
+        <div class="box" id="box4">BOX 4</div>
+    </div>
+
+</body>
+</html>
