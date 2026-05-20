@@ -1,0 +1,40 @@
+We have 2 types of shadows in CSS, one is box shadow and other is called text shadow.
+
+Basically used to add the shadows to your text or box.
+We use this tag like this: 
+box-shadow: x-offset y-offset colour-of-shadow;
+
+box-shadow: 10px 15px red;
+this command will apply the box shadow to the right of the image because the x offset is set to positive and the shadow will be below the image because we have set the y offset as positive too, if we had set the offsets as negative, then the direction would have switched, like if we had negative x offset, then the shadow will appear to the left side instead of right and same with y offset.
+
+we also have an other notation for the same:
+box-shadow: x-offset y-offset blur-radius colour-of-shadow;
+This makes the shadow a bit blur and px denotes the intensity of the blur. The more value you add the lighter the colour becomes and more prominent the blur becomes.
+
+Then comes the other notation too:
+box-shadow: x-offset y-offset blur-radius spread-radius colour-of-shadow;
+The spread-radius controls the spread intensity of the shadow.
+
+we also have other notation:
+box-shadow: inset x-offset y-offset blur-radius spread-radius colour-of-shadow;
+This simply means that we will have the shadow inside the box and not outside.
+
+We can also add multiple shadows:
+box-shadow: 10px 15px red, 15px 20px green;
+
+We can create custom variables using
+--primary-colour Exact this syntax two hyphens before the name of the variable and then to access the variable, we use var(--primary-colour). This must be inside a class inside a style tag. We can have same variable names inside two different classes but they are not related to each other.
+
+and if we want to use these variables everywhere inside the style tag, then we will need to define it inside the root variable and we do it this way:
+
+    <style>
+        .root{
+            
+        }
+    </style>
+
+Similarly, we have text shadow too, similar parameters, we just dont have spread radius parameter in this one:
+text-shadow: 10px 12px 4px red;
+notation: x-offset y-offset blur-radius colour.
+
+We can add multiple text shadows too.
