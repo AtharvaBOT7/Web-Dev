@@ -1,0 +1,27 @@
+Transforms mean applying some kind of transformation to a div, for example decreasing or increasing the size of the div, rotating or making it maginified, moving it etc.
+
+We created a stylesheet and linked it to the html code:
+
+.box{
+    width: 400px;
+    height: 400px;
+    background-color: burlywood;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+
+    transition: all 3s linear 1s;
+}
+
+.box:hover{
+    transform: rotate(45deg);
+}
+
+p{
+    font-size: 36px;
+}
+
+in the code, the smoothening part is done by transition but the rotation part is done by transform.
+
