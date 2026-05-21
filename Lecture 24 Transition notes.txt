@@ -1,0 +1,17 @@
+Transition means moving from a source state to a destination state. There are no continuous movements nor are there any complex movements, there are complex movements in animation where we have a series of movements. Transition has a single switch.
+
+An Animation has multiple Transitions. Transitions are smaller subset of animations. Therefore a single step is transition and that series of transitions is animation.
+
+We set a few transition attributes inside the box class inside the style tag:
+    transition-property: width;
+    transition-delay: 2s;
+    transition-timing-function: linear;
+but we will not be able to see any transition unless we define "actions".
+
+To apply the transitions, we will define pseudo class, using:
+    .box:hover{
+        width: 1500px;
+        background-color: aqua;
+    }
+
+We can also apply the transtion effect using commas if we dont want to apply transition on all the elements.
