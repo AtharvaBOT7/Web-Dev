@@ -42,3 +42,50 @@ we made a complex layout using grids but it is easier if we can create a 2D matr
 This is the easiest way to create grid template ares.
 
 We must use ids and then use the ids to replicate the structure. here header is the id of the header div tag.
+
+
+3D TRANSFORM NOTES:
+
+Now we will learn about the properties like translation, scaling, rotation etc.
+
+    #rotatex:hover{
+        transform: rotateX(45deg);
+    }
+
+    #rotatey:hover{
+        transform: rotateY(45deg);
+    }
+
+    #rotatez:hover{
+        transform: rotateZ(45deg);
+    }
+
+we can use these properties as is for X,Y and Z axes but we will need to set a perspective for the Z axis for Scale and Translate property.
+
+Here is the Translate Property:
+
+    #translatex:hover{
+        transform: translateX(100px);
+    }
+
+    #translatey:hover{
+        transform: translateY(100px);
+    }
+
+    #translatez:hover{
+        transform:perspective(300px) translateZ(100px);
+    }
+
+Here is the Scale Property:
+
+    #scalex:hover{
+        transform: scaleX(1.5);
+    }
+
+    #scaley:hover{
+        transform: scaleY(1.5);
+    }
+
+    #scalez:hover{
+        transform:perspective(300px) scale(3) rotateY(30deg);
+    }
