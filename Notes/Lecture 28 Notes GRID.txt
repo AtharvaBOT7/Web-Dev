@@ -1,0 +1,35 @@
+CSS Grid is to layout your website. CSS Grid makes it easier to create layouts.
+
+2 dimensional structure is called grid when your website is split into rows and columns.
+
+Naming convention is the same:
+1. Rows and Columns
+2. Individual cell
+3. The vertical distance between a cell i.e the length of the cell is called track.
+4. Grid lines - the lines that divide the rows and columns.
+
+Powerful layouts are always created using a combination of Flexbox and Grid properties.
+
+Similar to flexbox, here too we will need to mark the parent container as display: grid to set it as a grid, we also have child items like in flexbox.
+
+we have a properties called row-gap: 2rem and column-gap: 1rem this will set the gap between the grid items. i.e the cells.
+
+to create number of rows and columns, we have the property called grid-template-rows: 100px 100px; and grid-template-columns: 100px 100px 100px;
+
+Now we were using px, but a better unit will be fr (fractional units) this means that if the length of the parent container is 1000px, and we want 10frs, then 1000px = 10fr and we can give sizes to each of the grid like 3fr 3fr 3fr 1fr like this this means we will have 4 divisions with 3 of them being 300px and 1 being 100px.
+
+we also have an attribute grid-template-columns: 100px 100px 100px = grid-template-columns: repeat(3, 1fr) assuming 1fr is 100px here.
+
+We can also span the cells using the lines. To do that go to inspect on your browser and check the number of lines you want to include.
+    grid-column-start: 1;
+    grid-column-end: 4;
+This will span the property from the column line 1 to column line 4.
+
+The whole point is that in CSS Grid, you often want specific cells to behave differently — span more columns, span more rows, etc. So you give each cell its own class to control it individually, while item handles the shared styling. Therefore we have 2 classes or more classes depends on the behaviour of that cell.
+
+justify-self is a grid item property that aligns a grid item inside a  cell along the inline (row) axis as opposed to align-self which aligns along the block (column) axis. justify-self and align-self values apply to a grid item inside a single cell.
+justify-self and align-self are somewhat similar to justify-content and align-items from flexbox. Then we also have a property called place-self this just combines the two properties, justify-self and align-self.
+
+Justify-items is an item level property which aligns grid items along the row axis and align-items aligns the items aling the column axis.
+justify-items: left will shift the items to the left of the their respective cell. But Justify-items and align-items properties must be defined in the parent container.
+
