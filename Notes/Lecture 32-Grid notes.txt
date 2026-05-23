@@ -40,3 +40,5 @@ we made a complex layout using grids but it is easier if we can create a 2D matr
                 "footer footer footer"
             ;
 This is the easiest way to create grid template ares.
+
+We must use ids and then use the ids to replicate the structure. here header is the id of the header div tag.
