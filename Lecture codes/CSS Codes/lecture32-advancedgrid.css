@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100%;
+    width: 100%;
+}
+
+.container{
+    height: 100%;
+    width: 100%;
+    padding: 4rem;
+
+    display: grid;
+    gap: 1rem;
+
+    background-color: antiquewhite;
+
+    /* grid-template-columns: repeat(3, 1fr); */
+
+    grid-template-columns: repeat(auto-fit, minmax(200px, 500px));
+}
+
+.item{
+    border: 2px solid rgb(47, 43, 43);
+    background-color: aqua;
+
+    padding: 1rem;
+}
