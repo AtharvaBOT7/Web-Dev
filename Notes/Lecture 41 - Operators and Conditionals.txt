@@ -1,0 +1,124 @@
+The symbols which perform an operation like +, -, *, /, **, %, --, ++ are called operators. 
+
+Types of Operators:
+- Arithmetic 
+- Assignment
+- Comparison
+- Logical 
+- Bitwise
+- Ternary
+
+We can also use the ++ and -- as post increment/decrement and pre increment/decrement values,
+
+Both are 2 step processes:
+POST INCREMENT:
+1. First use the value
+2. Apply increment or decrement on the value
+
+PRE INCREMENT:
+1. First apply increment or decrement on the value
+2. Use the value.
+
+
+
+Assignment operator:  =
+let a = 5;
+a = a - 12;
+
+Comparison Operators: Always return boolean vlaue.
+>, <, <=, >=, ==, !=
+
+We also have Strict Equality VS Loose Equality
+=== is used for strict equality which means both the data type and vlaue are checked to determine the equality and it returns a boolean value.
+
+== is used for loose equality, which means only the vlaue is checked to determine the equality and it returns a boolean value.
+
+For strict and loose we also have != and !==, != will only check the value which means console.log('5' != 5); will return  and console.log('5' !== 5);
+
+For example:
+console.log(5 == 5); // This will return true
+
+console.log('5' == 5); // This too will return true because loose equality checks only the value and not the data type
+
+console.log('5' === 5); //This will return false
+
+
+
+TERNARY OPERATORS:
+
+We use ternary operators when we want to fulfill a certain condition. 
+For example if age is greater than 18 then we can vote else cannot vote.
+
+Syntax -> (condition) ? Value if true : Value if false
+
+(age>18) ? "Vote" : "Cannot Vote";
+
+
+
+
+LOGICAL OPERATORS:
+The Logical operators are used to connect two or more experssions or conditions to make decisions based on the criteria employed.
+
+- AND (&&)
+- OR (||)
+- NOT (!)
+
+Syntax: (condition) && (condition);
+
+
+An important thing to keep in mind is how Logical operators work with non booleans
+For example (false && 'A');  or (false || 4);
+
+There is a concept called Concept of Falsey and Truthy, which means whenever we use the logical operator with non booleans, then the value can be either true or false.
+
+FALSEY:
+- undefined
+- null
+- 0
+- false
+- NaN
+- ''
+
+TRUTHY:
+- Anything which is not falsey
+
+Concept of short-circuiting:: If we have a condition like (false || true || false || true || false || true), then after looking at the second true value from the left, the OR operator will return True value and not even check the further conditions.
+
+
+
+BITWISE OPERATORS:
+
+- Bitwise AND (&)
+- Bitwise OR (|)
+- Bitwise NOT (~)
+- Bitwise XOR (^)
+- Left Shift (<<)
+- Right Shift (>>)
+
+These follow the truth table that we already know.
+XOR means if we have the same things in A and B, then the output will be 0 and if we have different things then the answer will be 1.
+
+Whenever we left shift any number by 1 place, it will get mulitplied by 2, because we are simply shifting the digits by 1 place.
+Similarly if we do it by 2 places, then the number will be multiplied by 4.
+
+And when we right shift any number by 1 place, then the number will be divided by 2 because the number is simply shifted to the right by 1 place and the digit on the right most place is lost.
+
+
+
+
+CONDITIONALS:
+
+- if-else 
+- switch
+
+If - else syntax: if (condition) {} else {}
+
+We also have if-else-if statements
+
+
+SWITCH CASE:
+switch (expression){
+    case _ : (logic);
+    case _ : (logic);
+    default: (logic);
+}
