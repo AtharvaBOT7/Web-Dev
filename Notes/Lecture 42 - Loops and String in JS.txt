@@ -1,0 +1,122 @@
+We use loops to execute a set of instructions repeatedly.
+
+Types of Loops in JS:
+1. While
+2. Do-While
+3. For
+
+We also have different loops like for in, for each, for of loops but these will be covered after we complete about arrays.
+
+
+
+FOR LOOP:
+
+Syntax: for (initialization, condition, increment/decrement/ updation){
+    loop logic
+}
+
+10 times printing hello
+
+for (let i = 1; i <=10; i++){
+    console.log("Hello");
+}
+
+We also have break and continue keywords.
+
+
+
+WHILE LOOP:
+
+initialisation
+while (condition){
+    loop logic
+    updation
+}
+
+
+
+
+DO WHILE LOOP:
+
+let i = 1;
+do{
+    console.log(i);
+    i++;
+}
+while(i<=10);
+
+Do while loop will run atleast 1 time.
+
+
+
+
+STRINGS:
+sequence of characters.
+
+let name = 'Atharva';
+let anme = "ATHARVA";
+
+let name = `This 
+is 
+backticks
+example
+for 
+multi-line
+strings`;
+
+Other way to create strings:
+let firstName = new String("Atharva Chundurwar");    // This will print [String: 'Atharva Chundurwar'] on the console.
+
+OPERATIONS ON STRINGS:
+- concat
+- substring
+- length
+- upper / lower
+- charat 
+- 
+
+CONCAT:
+let a = "Hello ";
+let b = "World ";
+
+let c = a + b;
+console.log(c);  // This will print Hello World .
+
+Concatenation using backticks
+
+let a = "Hello ";
+let b = "WoRld ";
+
+// let ans = `a + b`;
+// console.log(ans);   // This will print a + b in the console and not Hello World.
+
+// let ans2 = `${a} + ${b}`
+// console.log(ans2);  // This will print Hello  + World . because we have a space after hello string and the plus symbol will be printed as is/
+
+// console.log(`${a}${b}`); // This will print Hello World . with just 1 space in between.
+
+
+OPERATIONS:
+
+console.log(a.length);
+console.log(a.toUpperCase());
+console.log(b.toLowerCase());
+
+
+SUBSTRING:
+JS is a 0 index language.
+
+let str = "HELLOWORLDHOWAREYOU";
+console.log(str.substring(2));  // This will output LLOWORLDHOWAREYOU which means after the 2 character, print everything
+
+console.log(str.substring(2,10));   // This will output LLOWORLD. We do not include the character present on the 10th index ie the last index
+
+
+
+let sentence = "Hello WOrld how are YOu?";
+console.log(sentence.split(" "));  // THis will output [ 'Hello', 'WOrld', 'how', 'are', 'YOu?' ], ie we split the sentences based on space character.
+This is an array of strings.
+
+Just like a latex file, if we want to include "" or any other symbol in the string that we dont want the ", or ' or ` to include then we use \' or whatever the symbol is.
+Here \ means that whatever character comes just 1 index right of \ is treated as a normal character and not a special character.
+
