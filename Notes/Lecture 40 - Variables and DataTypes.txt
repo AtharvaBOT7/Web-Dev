@@ -1,0 +1,83 @@
+Variables are named memory locations. 
+
+In JS we have different variable keywords like var, let, const. 
+We can create variables using:
+1. var age = 25;
+2. let age = 23;
+3. const age = 38;
+
+We have stopped using the var keyword because it is function scoped and gloabally scoped but not block scoped. 
+
+Example:
+function example(){
+    var x = 10;
+    console.log(x);      
+}
+
+example(x) --> This will print value 10 on the console
+but we cannot access x outside the function example, if we try to execute console.log(x) outside the function, it will throw an error.
+
+If we declare the variable 
+var age = 48;
+outside the function, it will be gloablly scoped and available everywhere inside the code.
+
+There are several reasons we dont use var:
+1. It can be reassigned without an error, therefore we can do something like var age = 94; and then at some point later var x = "Hello";, this will be compiled and run without errors, therefore causing a lot of trouble in trouble shooting.
+2. Cannot be block scoped.
+3. Redefinition is possible.
+
+Therefore we had let and const.
+
+
+
+
+LET VARIABLES:
+
+Any variable created using let keyword is block scoped. Which means it is accessible only in between those brackets inside which you create it.
+{
+    let a = 10;
+    console.log(a);  // This will work and output 10.
+}
+
+console.log(a);  // This will throw an error that a is not defined.
+
+Redefinition of let variables is not possible.
+Example:
+let a = 10;
+a = 11;  // This is possible, reassignment is possible. 
+
+let a = 11;  // This is not possible redefinition is not possible.
+
+Dynamically Typed:
+
+let a = 10;
+a = "Helo";
+a = True;
+
+// This is possible as JS is dynamically typed language.
+
+
+
+
+CONST VARIABLES:
+
+const a = 98;
+
+This means now value of a is fixed, we cannot redefine and we cannot reassign.
+
+
+
+
+DATA TYPES:
+
+1. Primitive data type 
+2. Non Primitive data type 
+
+PRIMITIVE DATA TYPES:
+- number      (range is -2^53-1 to 2^53-1)
+- string
+- null      (let value = null;)
+- bigint     (if we want to represent numbers more than 2^53 -1, we use bigint)
+- undefined     (used like this let age; this means we have not yet defined the value of that variable)
+- boolean
+- symbol
