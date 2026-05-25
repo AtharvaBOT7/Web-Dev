@@ -1,0 +1,26 @@
+Javascript is a scripting language built with the intent to be run on client side / browsers to handle the behaviour of a webpage.
+
+We add logic into our website uisng Javascript. 
+Example to create a button on our webpage, 
+we use HTML to strucutre the button using button tag, then we handle the appearance of that button using CSS and finally we will now handle how that button behaves or functions using javascript. Brain of the webpage.
+
+Node JS is a C++ program where we added JS. Node JS = C++ + JS. Node JS is used to created backend applications and server side programming.
+
+ECMA script is a JS standard like a definition / uniformity in JS to add functionality in JS so that the same JS code runs uniformly everywhere. 
+
+Just like we need a C++ compiler to compile C++ code to machine level, we need a JS engine in our browser to run JS code. The JS engine parses the JS code and then converts it to machine understandable format so that the browser can run the machine level code.
+
+2 Basic ways of running JS code:
+1. Run on browser directly
+2. VS code
+
+We also have other options but these are main ones. 
+
+To run JS on browser just go to inspect -> console and run the code there.
+
+Just like we had inline CSS, we can also run JS inline but to do that we will have to define the JS logic inside the <script> tag adn we can define it anywhere, inside the body tag or inside the head tag. 
+
+The best practice is to write down the JS code at the end of the body tag, like inside the body tag but just at the end, because JS code will refer to some elements and it might happen that if we define JS earlier, it might be possible that the element we are referring to is not even defined by then, and it might cause some problems. 
+
+To run the JS code on your VS code terminal, we will use the command node Lecture39.js 
+
