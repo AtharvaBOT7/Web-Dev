@@ -1,0 +1,122 @@
+LECTURE 45:
+
+Hoisting is a process that shifts the variable and function declarations to the top of their scope.
+
+For example:
+sayName("ATHARVA");    // You might think this function call will give an error but due to the Hoisting process, the function declaration shifts to the top of the scope and it will execute similar to the function call below. OUTPUT WILL BE ATHARVA
+
+function sayName(name) {
+    console.log(name);
+}
+
+sayName("ATHARVA");
+
+
+VARIABLE HOISTING 
+Similar to function hoisting, if we try to access a variable before definition, then we get that the variable is undefined unlike function hoisting, because the variable is defined at a later stage in the code. For function, the entire function declaration along with the function definition shifts at the top but in case of the variable, only the declaration is shifted ie, if we have var age = 35; then only var age will be shifted, 35 value will not be assigned to age variable. Shifting the variable scope to the top of the scope is only possible for the variables created using var keyword and not for other variables created using let or const keywords. 
+
+console.log(age);     // OUTPUT WILL BE undefined.
+var age = 34;
+
+console.log(age);    // REFERENCE ERROR
+let age = 34; 
+
+FOR FUNCTION HOISTING, if we create the functions using the function expressions, then function hoisting will not be possible, hoisting is possible only for the funcitons created using the function keyword.
+
+sayhello();    // WORKS AS EXPECTED
+function sayhello(){
+    console.log("HELLO");
+}
+
+
+saybye();   // WILL RETURN REFERENCE ERROR
+let saybye = function(){
+    console.log("BYE");
+}
+
+
+
+CLASS HOISTING
+Class hoisting is not possible
+
+const obj1 = new Human();  // RETURNS REFERENCE ERROR
+class Human {
+
+}
+
+const obj1 = new Human();   // WORKS FINE
+
+
+
+FUNCTION CALL STACK
+
+Nested funcitons will be always be called in an order and that order is maintained using a stack.
+
+FUNCTIONS ARE CALLED FIRST CLASS CITIZENS
+- Because functions can be assigned to variable, 
+- Can be passed as an argument,
+- Can return a function
+- It is possible to use funcitons in data structures
+- Use as property.
+
+
+!!!!!IMPORTANT!!!!!
+
+function solve(number){
+    return function(number){
+        return number * number;
+    }
+}      // DEFINED A FUNCTION TO RETURN A FUNCTION 
+
+let ans = solve(5);       // NOW ans variable has the function function.
+let final = ans(9);       // THEREFORE it will return 9 * 9 because we have called ans function now with parameter as 9.
+
+console.log(final);
+
+
+!!!!!IMPORTANT!!!!!
+
+const arr = [
+    function(a,b){
+        return a + b;
+    },
+    function(a,b){
+        return a - b;
+    },
+    function(a,b){
+        return a * b;
+    }
+];
+
+let first = arr[0];
+let firstans = first(4,9);
+console.log(firstans);  // THIS WILL RETURN 13 because we can assign the array element to the variable just like the above case.
+
+
+
+
+
+LECTURE 46:
+
+Variables can have different scope in JS:
+1. Global Scope - the variable can be accessed anywhere inside a file
+2. Function Scope - the variable can be accessed inside the function only and if tried to access outside, it will return an error.
+3. Block Scope - If we have defined blocks using {} and have defined variables inside the blocks then, the variables will be accessed only inside the block and functions defined inside the block.
+
+Only the variables created using var keyword are not block scoped, which means that variables created in the block scope using var keyword can be accessed anywhere inside the code.
+Variables created using let and const keywords will give an error if we try to access it outside the block.
+
+
+
+TEMPORAL DEAD ZONE:
+Now if we remember the hoisting lecture correctly, then we had proved that variables created using the var keyword can be accessed before assigning value to them, it will just show undefined but it gave an error when we tried to hoist the variables created using the keyword let and const and they cannot be hoisted, it returned an error that cannot access the variable before initialization.
+
+So the temporal deadzone means: Example if we have this
+
+console.log(marks);
+console.log("Hello");
+console.log("Hello1");
+console.log("Hello2");
+const marks = 100;
+
+There is a temporal deadzone between the line 116 and 119 which means if we try to access marks variable inbetween those lines, then we cannot do that.
