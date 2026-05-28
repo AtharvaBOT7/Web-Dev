@@ -43,4 +43,5 @@ for (let key in obj){
 
     obj2[key] = value;
 }
+console.log(obj);
 console.log(obj2);
