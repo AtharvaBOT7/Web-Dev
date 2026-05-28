@@ -1,0 +1,47 @@
+Class defintion consists of 2 major things:
+1. Class State - Properties 
+2. Class Behaviour - Functionalities
+
+class Human {
+    // Properties
+
+    age = 45;      // When we created these variables, they are public by default which means they can be accessed by the . operator.
+    #weight = 234;  // We put # infront of the varibale name to make it private, which means that we can access the variable only inside the class and not outside the class.
+    height = 120;
+
+    // Functions / Behaviours
+
+    walk(){
+        console.log("This human walks because he weights: ", this.#wt);     // To access the private variable, we will have to denote it using the "this" operator.
+    }
+
+    run(){
+        console.log("This human cannot run due to his weight. LOLOLOLOL HAHAHA");
+    }
+}
+
+let obj = new Human();
+
+obj.walk();
+let ans = obj.age;  // This will work and ans will have the value 45 because it is created publically inside the class and the variable will be accessible inside the class as well as outside the class.
+
+
+
+GETTERS AND SETTERS:
+
+If we have some private variables inside a class, then we will need getters and setters to access the private variables outside the class scope.
+Getter : Used to access the private variable value inside the class from outside the class.
+Setter: Used to update the value of the private value from outside the class.
+
+
+
+
+DEFAULT PARAMETERS
+If we forget to assign values to some of the parameters, then we can assign some default values.
+
+function sayName(myName = "default name"){   // Setting default parameters
+    console.log("My name is: ", myName);
+}
+
+if we call sayName() then the output will be default name.
+
