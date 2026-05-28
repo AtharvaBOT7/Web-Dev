@@ -1,0 +1,41 @@
+Objects are dynamic in nature which means we can change the object properties at run time, example:
+
+let obj = {
+    age: 89,
+    wt: 29,
+    ht: 74
+};
+
+console.log(obj);
+
+obj.color = "Green";
+
+console.log(obj);
+
+we can also set age or height or weight to whatever values we want.
+
+
+!!!!!!!!!OBJECT CLONING!!!!!!!!!
+
+if we have the above code and we do:
+let obj2 = obj;
+then we will not clone the obj into obj2, the object obj2 will simply be a reference to obj, it will not be a clone.
+
+We have 3 ways to clone an object:
+1. Using Spread operator (...)       let obj2 = {...obj} // This will clone obj into obj2.
+2. Using the Assign Method           let obj3 = Object.assign({}, obj);   // This will clone obj into obj2.
+3. Using Iteration for each of the properties of the object, we can clone the object obj to obj2.
+
+Iteration:
+for (let key in obj){
+    let newKey = key;
+    let value = obj[key];
+
+    obj2[key] = value;
+}
+console.log(obj2);
+
+
+In C / C++ when we allocate memory, we will need to deallocate the memory using free / delete keywords.
+
+In JS, we have GC, if we have some program which is no longer in use, then we can free the memory using the tool called garbage collector.  We have no control over garbage collector in JS, it runs automatically in JS and will free memory as it runs in background.
