@@ -1,0 +1,50 @@
+We can:
+
+Add:
+1. enternal CSS
+2. inline CSS
+3. internal CSS
+
+Using the .style property, we can change the inline styles on an element/s using their id or class. We can get and set their properties. the .style property can modify only one element at a time.
+
+let newElement = document.querySelector("#spara");
+newElement.style.backgroundColor = "red";
+
+This lets us select just one element whose id is spara, but what if we need to select multiple elements:
+
+ANOTHER WAY OF DOING IT IS USING .cssText PROPERTY, USING .cssText WE CAN ACCESS MULTIPLE CSS PROPERTIES AT ONCE.
+EXAMPLE:
+
+newElement.style.cssText;       // This lets us acces multiple CSS properties at once.
+
+
+newElement.style.cssText = "background-color: black; color: white; padding: 0.3rem";         // We defined multiple CSS properties.
+
+
+we have another property called .setAttribute()
+
+let firstElement = document.getElementById("fdiv");
+
+firstElement.setAttribute("class", "divClass");        // This will add an attribute called class with the name divClass inside the firstElement tag. If we already had had some of the properties defined inside the setAttribute property, then the properties set using setAttribute will be given higher priority which means the earlier values will be overridden. All the style properties will be overridden which means if we had defined bg-color, padding and margin in inline CSS and then using .setAttribute set only margin, then the new rendered view will have only margin attribute and everything else will not be visible.
+
+
+
+Using the .className property we can set / fetch the classNames of an element and then we can also set new class names, the new class names set by .className will override the previous class names.
+
+
+.classList property
+
+we can:
+1. get --> Array of the properties / elements inside the class 
+2. add 
+3. remove 
+4. toggle
+5. contains method
+
+
+
+let fpara = document.querySelector("#fpara");
+
+fpara.classList;      // Outputs this: DOMTokenList(2) ['firstClass', 'secondClass', value: 'firstClass secondClass']
+
+fpara.classList.add("thirdClass");     // Adds another class, appends not replaces. Therefore we will see 3 classes now
