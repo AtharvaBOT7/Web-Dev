@@ -1,0 +1,141 @@
+Browser Events:
+1. Event: Event is just like an announcement. For example when we click on the window, type on the window etc, press Esc key or anything we do is called an event and every event is associated with an action.
+
+monitorEvents(document);   // When we execute this command on console, we will see that whenever we click anywhere on the browser, we will see every action that is being performed. 
+
+unmonitorEvents(document);  // Similarly we use this to unmonitor the monitored events.
+
+Event-Target: Event target is an entity where the event is received. 
+Then for every event we have an event action and the entity where the event actions are stored is called event listener.
+
+We can add event listeners to the elements using addEventListener() and remove the event listeners using removeEventListener().
+
+Syntax:
+****************<event-target>.addEventListener(<event-type>, <function --> Which represents an action>)****************
+
+
+
+*************************************************************************************************************************************
+function changeText(){
+    let fpara = document.querySelector("#fpara");
+    fpara.textContent = "Hello Atharva";
+}
+
+let fpara = document.querySelector("#fpara");
+
+fpara.addEventListener('click', changeText);     // Optimal way to create an event listener
+
+fpara.removeEventListener('click', changeText);  // By adding this we have removed the event listener that we just created.
+
+// In this section of code we first created a function and then we added a textContent parameter which lets us change the content of the text present inside, and then we created an Event Listener, which will change the content present on the screen to the new content that we are passing inside that function.
+
+There is an other way of doing the Event Listener too:
+fpara.addEventListener('click', function(){
+    let fpara = document.querySelector("#fpara");
+    fpara.textContent = "Hello Atharva";
+} );
+
+but there is a major flaw in this code because what will happen is if we define the event listener in this way and in future we want to remove that, then it can only be removed if we have the same object inside the removeEventListener function. 
+But when we pass the function property like this to the addEventListener funciton, we have created a separate entity and if we try to remove the event listener using this:
+
+fpara.removeEventListener('click', function(){
+    let fpara = document.querySelector("#fpara");
+    fpara.textContent = "Hello Atharva";
+} );
+
+then the event listener will not be removed because this creates a reference to the same function and the reference is deleted not the function. Therefore the best practice is to define the function separately and passing the function name.
+*************************************************************************************************************************************
+
+2. Respond: 
+
+3. Data Stored:
+
+4. Stop: 
+
+
+5. Lifecycle: Phases of an event.
+
+We have 3 main phases: Capturing phase, At-Target phase, Bubbling phase.
+
+suppose we have this hierarchy for the event:
+ 
+    <div>
+    <article>
+    <h1> ... </h1>
+        <p id="fpara">
+            Hello World
+        </p>  // Suppose the event is defined for this p tag
+    </article>
+    </div>
+
+The event will traverse in this direction: first come from window to the next elements and then to div then to article then to p tag.
+Window --> ... --> div --> article --> p 
+
+This is called Capturing Phase. 
+When we have reached the event target, in this case when we have parsed from the window element to the p tag, it is called At-Target phase. 
+
+After reaching the At-Target phase, we will traverse back to the window element and this is called the Bubbling Phase. The addEventListener by default is being applied in the Bubbling phase, tht means after the Capturing phase and the At-Target phase.
+
+If we want the addEventListener() function to be triggered in the capturing phase, then we will have to pass a parameter called useCapture. 
+
+
+*************************************************************************************************************************************
+EVENT OBJECT:
+
+function changeText(event){
+    console.log(event);
+    let fpara = document.querySelector("#fpara");
+    fpara.textContent = "Hello Atharva";
+}
+
+let fpara = document.querySelector("#fpara");
+
+fpara.addEventListener('click', changeText);
+
+We now have passed the event as an argument to the changeText function.
+*************************************************************************************************************************************
+
+
+
+
+DEFAULT ACTION:
+
+Every element has a default action, for example the a tag, it redirects us to a link.
+
+<a id="fanchor" href="https://www.google.com/">Click here</a>
+We added an anchor tag to redirect to google. This means whenever we click on Click Here, it will redirect us to google.com. 
+
+There is a way to the change the default behaviour of the anchor tag.
+
+let anchorElement = document.querySelector("#fanchor");
+
+function anchorEvent(event){
+    event.preventDefault();
+    anchorElement.textContent = "Click Done";
+}
+
+anchorElement.addEventListener('click', anchorEvent);
+
+
+There is a famous problem which is called Avoiding Too Many Listeners. Adding many listeners can impact the performance of our site.
+We should use the target parameter to create the listener on the parent element rather than creating many different listeners on the child elements.
+
+
+Suppose we also add a span tag inside the parent div:
+    <div id="wrapper">
+        <p id="fpara">First <span>First Span</span> Para</p>
+        <p id="spara">Second <span>Second Span</span> Para</p>
+        <p id="tpara">Third <span>Third Span</span> Para</p>
+        <p id="fopara">Fourth <span>Fourth Span</span> Para</p>
+    </div>
+
+So there are 2 tags there the p tag and the span tag which have listeners associated with it, so there will be 2 types of actions in this case. If we click on First or Para, then we will see the entire text content of the p tag which is First First Span Para. But of we click on First Span then we will see only First Span, because that is the only content in the span tag.
+
+Suppose we want the event to show only for Span tag, then:
+
+function alertPara(){
+    if (event.target.nodeName === "SPAN"){
+        alert("You have clicked on para: " + event.target.textContent);
+    } 
+}
+This function is created if we want the event to be triggered only for the span tag and not the p tag.
