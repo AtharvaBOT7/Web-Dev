@@ -1,0 +1,232 @@
+JS DOM Manipulation:
+
+The Window object is the global object and every object will be below the window object. Window object sits on top of the root element as well. Basically means a window that is open on Chrome or any other browser, that is the gloabl object that sits above every other object (it means it sits at the top of the hierarchy), even above the root object. Window object is created by the browser. ******
+ 
+If we have some global variable or method, then it will always be a child of the window object. Window object is created by your browser. We can also close the windows using window.close(), type it in the console. We can also open a new window using window.open() this opens a blank window.
+
+
+
+
+DOM (Document Object Model): DOM is the browser's JavaScript-friendly representation of your HTML, structured as a tree of objects that JS can read and manipulate in real time.
+Suppose we have a HTML file and if we convert the HTML code into a JS object, then the JS object is called a Document. And everything combined is called a Document Object Model, the HTML code, the JS object is called the Document Object Model.
+
+If we type "document" inside the browser console tab, then we will see the entire HTML code that is being used in the backend.
+
+When the browser loads your HTML file, it doesn't just read it as plain text — it converts it into a tree of objects that JavaScript can interact with. That tree is called the DOM.
+
+document
+└── html
+    ├── head
+    │   └── title
+    └── body
+        ├── h1
+        ├── p
+        └── div
+            └── button
+
+Every tag in your HTML becomes a node in this tree and JavaScript can:
+- Access them → find any element
+- Update them → change text, classes, attributes
+- Insert them → add new elements
+- Delete them → remove elements
+
+Think of it like this — your HTML is a blueprint, but the DOM is the actual building. JavaScript talks to the building, not the blueprint. So when you do:
+document.getElementById("title").innerText = "Hello!";
+
+You're not editing the HTML file — you're directly manipulating the live object in memory that the browser built from your HTML.
+
+So the basic flow is we have characters inside the <> brackets which means HTML, body, head etc etc, Then these characters are combined together to form a word which is called tag. These tags are then parsed by a tokenizer and converted to tokens and then these tokens are converted to DOM.
+
+
+*****************************************************************************
+Characters -> Tags ------------> tokens -> Node -> DOM
+                    tokenizer 
+*****************************************************************************
+
+Window is the top level inside it we have DOM, BOM, JS core features etc etc.
+
+
+
+BOM (Browser Object Model): BOM is JavaScript's way of interacting with the browser itself, while DOM is JavaScript's way of interacting with the HTML document inside it.
+While DOM is about your HTML document, BOM is about the browser window itself. It gives JavaScript access to everything outside the document — the browser's features.
+
+window  ← top level object (BOM)
+├── document      ← this is your (DOM)
+├── location      ← URL info
+├── history       ← browser history
+├── navigator     ← browser/device info
+└── screen        ← screen size info
+
+All the interactions with the browser except the HTML content (which will be characterized inside DOM), will be inside BOM.
+
+
+
+************************************************************************************************************************************************************************************
+To Change HTML:
+1. Access: 
+
+a. Access using ID     (Single O/P response)
+b. Access using ClassName    (Multiple O/P response)
+c. Access using TagName
+
+// If we do the following commands after connected the HTML and JS files, then we will see the following outputs 
+document.getElementById("fpara")     // Outputs: <p id="fpara"> First Para</p>
+document.getElementById("fheading")  // Outputs: <h1 id="heading">First Heading</h1>
+
+document.getElementsByClassName("textMatter")   // Outputs: HTMLCollection(2) [p#fpara.textMatter, h1#heading.textMatter, fpara: p#fpara.textMatter, heading: h1#heading.textMatter]
+                                                // If we observe carefully, then the output is in an array. and HTMLCollection(2) means that we have fetched 2 Classes.
+
+document.getElementsByTagName('p')              // Outputs: HTMLCollection(2) [p#fpara.textMatter, p#spara.textMatter, fpara: p#fpara.textMatter, spara: p#spara.textMatter]
+
+Our prior knowledge was, access the elements as follows:
+1. id -> #
+2. class -> .
+3. tags -> tagName (Eg 'p')
+
+Now we have a new method, that is using query selectors which meaans earlier if we had fpara, we can now simply do it using #fpara or .textMatter or querySelector('p')
+
+If we have multiple tags with the same class, then querySelector method will only return the tag which is at the top and will ignore the other tags. ***
+Same is the case with tags, if we run querySelector('p') then this will return only the first p tag and will ignore all the rest of the tags.
+
+Simple way to avoid this is using querySelectorAll, this will reutrn everything which is present inside a class or uses a specific tag.
+************************************************************************************************************************************************************************************
+
+Other simple hack to access an element is, simply go to the browser console and select the item you want to look at, when you select that item, you will see a $0 symbol, just copy paste that $0 into your console to see the code for that part.
+
+
+
+************************************************************************************************************************************************************************************
+UPDATE EXISTING VALUES:
+
+1. innerHTML
+2. outerHTML
+3. textContent
+4. innerText
+
+
+1. innerHTML       --> we can get/set any tag inside the HTML
+innerHTML gets/sets content inside the element. outerHTML gets/sets the element itself including its own tag.
+
+// Updating the exisitng values inside a HTML tag
+// If we do let button = $0 inside a browser console and then do button.innerHTML --> this will show all the HTML content that is present inside the button tag.
+
+//  How to set the values:
+// If we do button.innerHTML = '<p> HELLO WORLD </p>';  then we will see that inside the button tag, we will just have the p tag that we just inserted and nothing else.
+
+
+2. outerHTML
+
+// HTML:
+// <button id="btn"> Click Me </button>
+
+// let button = document.querySelector("#btn");
+
+button.innerHTML  // → " Click Me "
+// gives you everything INSIDE the tag, not the tag itself
+
+button.outerHTML  // → "<button id="btn"> Click Me </button>"
+// gives you the element itself + everything inside it
+
+// Think of it like this:
+// ::innerHTML → looks inside the house, gives you the furniture
+// :: outerHTML → gives you the entire house including the walls
+
+// Setting values:
+// innerHTML replaces content INSIDE the tag
+button.innerHTML = "<p>Hello</p>";
+// result → <button id="btn"><p>Hello</p></button>
+// tag stays, only inside changes
+
+// outerHTML replaces the ENTIRE element including the tag itself
+button.outerHTML = "<p>Hello</p>";
+// result → <p>Hello</p>
+// the button is completely gone, replaced by p tag
+
+
+3. textContent
+
+element.textContent outputs the entire text content present inside that element which means we will see everything including the new lines, etc etc
+
+if we use element.innerText, then we will only see the content in the way that is being rendered on the browser UI.
+
+************************************************************************************************************************************************************************************
+
+
+
+************************************************************************************************************************************************************************************
+ADDING ELEMENTS:
+
+To add a child, we will first have to create a child. 
+We create an element using .createElement()
+
+To add a child, we can use .appendChild()
+
+what we can do is:
+To add a H1 tag:
+
+let fheading = document.createElement('h1');
+fheading.textContent = "My name is Atharva";
+
+let bodyTag = document.querySelector('body');
+
+bodyTag.appendChild(fheading);
+
+THIS WILL ADD THE H1 tag, we can see that the H1 tag is added at the very bottom, this means that whenever we add an element using appendChild, the element will be added at the end of the parent tag by default.
+
+Now we see that we can only add an element at the end of the parent tag, is there a way we can do it as per our wish? Yes
+
+we use insertAdjacentElement():
+this function takes 2 parameters:
+1. position
+2. HTML content 
+
+1. Position:
+- before begin
+- after begin
+- before end
+- after end
+
+let mydiv = document.querySelector("#mydiv");
+let newElement = document.createElement('span');
+newElement.textContent = "I am inside span tag";
+mydiv.insertAdjacentElement('beforebegin', newElement);
+
+    <div>
+        Hello World
+
+        <!-- // beforebegin adds element here -->
+        <div id="mydiv">
+
+            <!-- // afterbegin adds element here -->
+
+            <p>First p</p>
+            <h1>First Heading</h1>
+            <p>Second p</p>
+
+            <!-- // beforeend adds element here -->
+        </div>
+        <!-- // afterend adds element here  -->
+    </div>
+
+************************************************************************************************************************************************************************************
+
+
+
+
+************************************************************************************************************************************************************************************
+REMOVAL OF ELEMENTS:
+
+just like appendChild to add an element, we use removeChild() to remove the child
+similarly we will need the parent element and the element we need to remove must be a child of the parent element and we must what that child is. So 2 parameters
+
+Syntax: parent.removeChild(childName);
+
+let parent = document.querySelector("#mydiv");
+let child = document.querySelector("#fpara1");
+
+parent.removeChild(child);      // This remove the text "First"
+
+
+We can access the parent element from inside the child element using: let parent = child.parentElement;
+
+************************************************************************************************************************************************************************************
