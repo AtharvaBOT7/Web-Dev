@@ -1,0 +1,157 @@
+A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives a function access to its outer scope. In JS, closures are created everytime a function is created, at function creation.
+
+CLOSURE is a top level entity and to create a CLOSURE, we need 2 IMPORTANT things:
+1. A FUNCTION 
+2. FUNCTION'S REQUIRED DATA (REQURIED DATA IS ALSO CALLED LEXICAL SCOPE OR SURROUNDING STATE)
+
+Therefore a closure is a combination of a function and its lexical scope.
+
+Code:
+
+function outerFunction() {
+  let name = "Noobie";
+
+  function innerFunction() {
+    console.log(name);
+  }
+
+return innerFunction;
+}
+
+let inner = outerFunction();
+
+inner();
+
+
+// ============================================================
+// CLOSURES - Complete Explanation
+// ============================================================
+
+// A closure is when a INNER FUNCTION remembers the variables of its OUTER FUNCTION even after the outer function has finished executing
+// 
+// In simple terms: "A function that remembers its birthplace"
+
+
+// ============================================================
+// BASIC EXAMPLE
+// ============================================================
+
+function outer() {
+    let name = "Atharva";        // variable in outer function
+
+    function inner() {
+        console.log(name);       // inner can access outer's variable
+    }
+
+    return inner;                // returning the inner function
+}
+
+let myFunc = outer();            // outer() finishes executing here
+                                 // normally 'name' should be gone now
+                                 // but...
+
+myFunc();                        // → "Atharva"
+// inner function STILL remembers 'name'
+// even though outer() is long gone!
+// THAT is a closure!
+
+
+// ============================================================
+// ANALOGY
+// ============================================================
+
+// Think of it like this bro:
+// You grew up in Delhi (outer function)
+// You moved to Mumbai (outer function finished)
+// But you still remember your Delhi address (closure)
+// The memories don't disappear just because you left!
+
+
+// ============================================================
+// WHY DOES THIS HAPPEN?
+// ============================================================
+
+// When inner function is created, it doesn't just get the VALUE
+// of outer's variables, it gets a REFERENCE to the entire
+// outer function's scope/environment
+// So even when outer() finishes, that scope stays alive
+// in memory because inner is still holding onto it
+
+
+// ============================================================
+// PRACTICAL EXAMPLE 1 - Counter
+// ============================================================
+
+function createCounter() {
+    let count = 0;               // private variable!
+
+    return function() {
+        count++;
+        console.log(count);
+    }
+}
+
+let counter = createCounter();
+counter();                       // → 1
+counter();                       // → 2
+counter();                       // → 3
+
+// count is not accessible from outside!
+console.log(count);              // → ReferenceError: count is not defined
+
+// This is like a PRIVATE VARIABLE bro
+// Only the inner function can touch it
+// nobody else can!
+
+
+// ============================================================
+// PRACTICAL EXAMPLE 2 - Multiple Closures
+// ============================================================
+
+function createCounter() {
+    let count = 0;
+
+    return {
+        increment: function() { count++; console.log(count); },
+        decrement: function() { count--; console.log(count); },
+        getCount:  function() { console.log(count); }
+    }
+}
+
+let counter1 = createCounter();  // has its OWN count variable
+let counter2 = createCounter();  // has its OWN count variable
+
+counter1.increment();            // → 1
+counter1.increment();            // → 2
+counter2.increment();            // → 1  ← completely separate!
+
+// each closure has its own copy of the outer scope!
+
+
+// ============================================================
+// PRACTICAL EXAMPLE 3 - Real world use case
+// ============================================================
+
+function multiplyBy(multiplier) {
+    return function(number) {
+        return number * multiplier;  // remembers multiplier!
+    }
+}
+
+let double = multiplyBy(2);
+let triple = multiplyBy(3);
+
+console.log(double(5));          // → 10
+console.log(triple(5));          // → 15
+console.log(double(10));         // → 20
+
+// super clean way to create reusable functions!
+
+
+// ============================================================
+// ONE LINE SUMMARY
+// ============================================================
+
+// A closure is an inner function that remembers and has access
+// to variables of its outer function even after the outer
+// function has finished executing
