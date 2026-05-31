@@ -1,0 +1,108 @@
+Promise (promise is an object) object in JS represents the eventual completion (or failure) of an aynchronous operation and its resulting value. Promise will teach us the clean way of handling async code in JS.
+
+A Promise is one these states:
+1. Pending: initial state, neither fulfilled nor rejected.
+2. Fulfilled: meaning that the operation was completed successfully.
+3. Rejected: meaning that the operation failed.
+
+Using promise, asynchronous methods can return values on the spot like synchronous methods. Instead of immediately returning the final value, the asynchronous method returns a promise to supply the value at some point in the future.
+
+Syntax:
+
+new Promise ((resolve, reject) => {
+    ...
+});
+
+// We try to write async code because we know that the async code will run in the background parallelly so it will speed up the execution.
+
+Example:
+let firstPromise = new Promise((resolve, reject) => {
+    console.log("Atharva");
+    // resolved(10012); // This means that the promise was fulfilled.
+
+    reject(new Error("Internal Server Error"));  // This will throw an error in the console.
+});
+
+function sayMyName(){
+    console.log("Name is Atharva");
+}
+
+setTimeout(sayMyName, 10000);
+
+
+We also have Then and Catch keywords.
+THEN: If a Promise was successfully executed and resolved, we can use the THEN keyword to execute a task.
+CATCH: If a Promise fails / or is rejected, then we use the catch keyword.
+
+Example:
+let promise1 = new Promise((resolve, reject) => {
+    let success = false;
+    if (success){
+        resolve("Promise Fulfilled");
+    }
+    else{
+        reject("Promise Rejected");
+    }
+});
+
+promise1.then((message) => {
+    console.log("Then block message is: " + message);
+}).catch((error) => {
+    console.log("Error: " + error);
+})
+
+We can also use multiple then blocks, it is called promise chaining:
+Example:
+
+promise1.then((message) => {
+    console.log("Then block message is: " + message);
+    return "Promise Fulfilled Second Message"
+}).then((message) => {
+    console.log(message);
+    return "Promise Fulfilled Third Message"
+}).then((message) => {
+    console.log(message);
+})
+
+
+
+We also have finally block similar to try catch and finally.
+Example:
+
+promise1.then((message) => {
+    console.log("Then block message is: " + message);
+    return "Promise Fulfilled Second Message"
+}).then((message) => {
+    console.log(message);
+    return "Promise Fulfilled Third Message"
+}).then((message) => {
+    console.log(message);
+}).catch((error) => {
+    console.error(error);
+}).finally((message) => {
+    console.log("I am finally, I will run everytime");
+})
+
+
+
+
+Suppose we have created multiples promises, then we also have the option of created Promise.all([promise1, ..., promiseN])
+The Promise.all block runs only after all the iterable promises are fulfilled. If any of the iterable promises fail, then the Promise.all promise too fails.
+
+let promise1 = new Promise((resolve, reject)=> {
+    setTimeout(resolve, 1000, "First");
+})
+let promise2 = new Promise((resolve, reject)=> {
+    setTimeout(resolve, 2000, "Second");
+})
+let promise3 = new Promise((resolve, reject)=> {
+    setTimeout(reject, 4000, "Third");
+})
+
+Promise.all([promise3, promise2, promise1])
+.then((values) => {
+    console.log(values);
+})
+.catch((error)=> {
+    console.error("error:" + error);
+})
