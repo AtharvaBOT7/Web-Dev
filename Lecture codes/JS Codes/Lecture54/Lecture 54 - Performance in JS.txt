@@ -1,0 +1,66 @@
+Performance Improvement:
+
+1. Meaasurement
+
+Suppose we write a code to create 100 para tags inside our body tag using JS:
+
+for(let i = 1; i <= 100; i++){
+    let para = document.createElement('p');
+    para.textContent = "This is para number: " + i;
+    document.body.appendChild(para);
+}
+
+In JS, we have a standard way to find out how much time our code is taking to run. This can be done using performance.now() method. This gives us very accurate values, it uses timestamp method, therefore it is a standard way of measuring the performance.
+
+
+
+
+There are 2 very important concepts that we should know:
+1. Reflow: Process of calculating a position/ dimensions of an element that we want to render on a page. This is a computationally intensive task. Therefore takes more time to execute.
+
+2. Repaint: Process of displaying an element / content pixel by pixel. It is faster than the reflow process. 
+
+The code that we write must use minimum number of reflows and repaints.
+
+// Code 1
+
+const t1 = performance.now();
+
+for(let i = 1; i <= 100; i++){
+    let para = document.createElement('p');
+    para.textContent = "This is para number: " + i;
+    document.body.appendChild(para);
+}
+const t2 = performance.now();
+
+console.log("Total time taken by code 1: " + (t2-t1));
+
+// Code 2
+const t3 = performance.now();
+
+let mydiv = document.createElement('div')
+
+for(let i = 1; i <= 100; i++){
+    let para = document.createElement('p');
+    para.textContent = "This is para number: " + i;
+    document.body.appendChild(para);
+}
+
+document.body.appendChild(mydiv);
+
+const t4 = performance.now();
+
+console.log("Total time taken by code 2: " + (t4-t3));
+
+Number of reflows and repaints in Code 1:
+In the first code, what we did is create a para, then we had it rendered in the body, which means it will show on the screen one at a time, therefore what happens is we use 100 reflows and 100 repaints because we reflow and repaint each time we want to render a new para.
+
+number of reflows and repaints in Code 2:
+In code 2, we first created a div, and then we started appending content to the div, after adding 100 paras to the div, at the end we appended that div to the body tag which means we ran reflow and repaint only once. Therefore we observed that code 2 was many times faster than code 1.
+
+
+
+2. Efficient / Good Practices to code::
+There is an entity called Document Fragment. So the Document Fragment is a light weight document object which means it is like a compressed version of the original document object. And the main advantage of document fragment is that while addition, it does not perform any reflow or repaint operation as compared to whenever we try to add / render anything in the original document object, it takes 1 reflow and 1 repaint.
+
+and at the end we will need to add the document fragment inside the original document object for the changes to be rendered.
