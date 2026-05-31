@@ -1,0 +1,144 @@
+JS is a single threaded language.
+
+To understand event loop concept, we will need to understand:
+
+1. Synchronous code: The code which executes at the same time is called Synchronous code. 
+
+Example:
+console.log("Hi");    // Sync code means when the parser reaches here, it will execute this line of code without first going further and checking the further code.
+console.log("Bye");
+console.log("Atharva");
+console.log("BOT");
+
+
+2. Asynchronous code:
+The code which does not execute when the parser reaches the line of code is called asynchronous code. We have a setTimeOut function. 
+
+Example:
+
+setTimeOut(sayName, 500);
+
+function sayName(name){
+    console.log(name)
+}
+
+This code we would think at first glance is that the code will execute after 500ms after reaching the function sayName but that is not the case here, the function will be executed at random time and not after 500ms, it is not guaranteed that it will execute after 500ms.
+
+Most of the important production level code is async in nature.
+
+
+3. Blocking: 
+
+For example, we have this code:
+
+console.log("Start");      // Console will print start and then move to the next line of code that is the network call code.
+
+Network call code//        // Now the parser is here on the network call code, which means that the code that is after this code will not execute until this code is executed which simply means that the code below this code is in blocked state till this code gets executed.
+
+console.log("End");
+
+Therefore to avoid blocking we have the concept of Event Loops as they are used to handle async code in JS.
+
+So in JS, all the synchronous code is executed first till the call stack is empty and then after taht as per the time of execution of the async code and the order in which they are present inside the callback queue, they will be executed. So first all sync code is executed and then async code is executed.
+
+EVENT LOOPS 
+1. Call Stack 
+2. Browser 
+3. Callback / Task Queue
+
+// ============================================================
+// EVENT LOOP - Complete Flow
+// ============================================================
+
+// First understand the 3 components:
+
+// 1. CALL STACK
+//    - Where JS executes code line by line
+//    - Works like a stack (Last In First Out)
+//    - JS is single threaded - only ONE thing runs at a time
+
+// 2. BROWSER (Web APIs)
+//    - Browser gives JS extra powers outside the call stack
+//    - Handles: setTimeout, fetch, DOM events, etc.
+//    - JS hands off async tasks here and moves on
+
+// 3. CALLBACK QUEUE (Task Queue)
+//    - When browser finishes an async task
+//    - It pushes the callback function here
+//    - Waits here until call stack is EMPTY
+
+// 4. EVENT LOOP
+//    - Constantly watches call stack and callback queue
+//    - If call stack is empty → pushes callback from queue to stack
+//    - This is the EVENT LOOP's only job
+
+
+// ============================================================
+// EXAMPLE - Let's trace the flow step by step
+// ============================================================
+
+console.log("Start");                    // LINE 1
+
+setTimeout(() => {
+    console.log("I am setTimeout");      // LINE 2
+}, 2000);
+
+console.log("End");                      // LINE 3
+
+
+// ============================================================
+// WHAT ACTUALLY HAPPENS:
+// ============================================================
+
+// STEP 1: LINE 1 enters call stack
+//         → "Start" gets printed
+//         → LINE 1 leaves call stack
+
+// STEP 2: setTimeout enters call stack
+//         → JS sees it's async
+//         → hands it off to the BROWSER
+//         → setTimeout leaves call stack immediately
+//         → JS does NOT wait here
+
+// STEP 3: LINE 3 enters call stack
+//         → "End" gets printed
+//         → LINE 3 leaves call stack
+//         → call stack is now EMPTY
+
+// STEP 4: Browser finishes the 2 second timer
+//         → pushes the callback () => console.log("I am setTimeout")
+//         → into the CALLBACK QUEUE
+
+// STEP 5: EVENT LOOP sees:
+//         → call stack is EMPTY ✅
+//         → callback queue has something ✅
+//         → pushes callback into call stack
+
+// STEP 6: callback runs
+//         → "I am setTimeout" gets printed
+
+// ============================================================
+// OUTPUT:
+// "Start"
+// "End"
+// "I am setTimeout"   ← comes last even though it's written second
+// ============================================================
+
+
+// ============================================================
+// THE GOLDEN RULE
+// ============================================================
+
+// Callback queue NEVER pushes to call stack until call stack is completely EMPTY
+// This is why async code always runs after sync code no matter how small the timer is
+
+setTimeout(() => {
+    console.log("I am setTimeout");
+}, 0);                                   // even with 0ms delay!
+
+console.log("I run first");
+
+// OUTPUT:
+// "I run first"
+// "I am setTimeout"
+// 0ms delay doesn't matter - call stack must be empty first!
