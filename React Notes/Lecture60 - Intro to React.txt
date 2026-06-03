@@ -1,0 +1,55 @@
+React is a JS UI library and is basically used for frontend / user experience. It makes coding very fast and very much optimized.
+
+Why REACT?
+- Architecture of React is component based and helps in writing modular code
+- Reusable code / easy to understand and debug  (for example footcode will be created just once but will be used on every page of that website)
+- Uses virtual DOM (lightweight copy of the actual DOM) (very very efficient DOM manipulation)
+- Creating a single page application with dynamic updation / reload (like YouTube, the left side bar does not reload only the content on the right reloads when we click on some other section)
+- Faster and more optimized development
+
+In REACT, 
+- we also have a concept of State Management.
+- UI can communicate and send messages / data transfer is possible between different components using Props.
+- Provides in built hooks (features)
+
+Steps:
+1. Run the following command to initialize a Reach project using Vite `npm create vite@latest`
+2. Install the required dependencies and name your react project
+3. We selected JavaScript
+4. Then we clicked on yes for Install with npm and start now?
+
+
+After hitting enter, React will create a folder structure for us and we will now understand the folder structure in detail:
+
+node_modules --> Any dependencies or packages installed using npm install will be present in this folder.
+public --> Static files needed for the project will be present here.
+src --> main code folder
+src/assets --> If we want to use any specific fonts / images / any css files etc will be present here
+index.html --> This is the file that will render on the browser.
+
+Inside the index.html file, we can see that body tag has the following information:
+<div id="root"></div>
+<script type="module" src="/src/main.jsx"></script>
+
+which means it is linked with main.jsx file and when we see the main.jsx file, we can see the following along with some import statements:
+createRoot(document.getElementById('root')).render(    // This means we are rendering the App component wherever we see root id.
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
+this means that we are importing the App component inside the main.jsx. The first component inside the react project is the app component.
+
+The flow of the project till now is, first our index.html file ran, then it calls the main.jsx file and then main.jsx calls app.jsx and this is linked with root id.
+
+
+********************************************************************************************************************************************************************************
+So when we create the folder structure or project using npm run dev, we get a file structure and we see a file named index.html in there, inside the index.html file we see a div with id = "root" and this root id is linked with main.jsx and our main.jsx file is telling to render the app component which is App.jsx
+
+We have files like index.css main.css which are linked with the corresponding files for styling.
+
+jsx - JavaScript XML extension, we might think that we are writing in HTML format but no that is wrong, we are writing code in JavaScript XML format. 
+
+So what happens is when we have any jsx code, it is then converted to React code and then that React code is converted to HTML code. (basically JSX is that type of code in which we can write JS code inside of HTML)
+********************************************************************************************************************************************************************************
+
+To create a react component, we will create a components folder inside the src folder and then create files for the components.
