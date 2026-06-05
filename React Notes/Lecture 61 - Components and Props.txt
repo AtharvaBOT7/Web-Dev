@@ -1,0 +1,55 @@
+Components can be treated as functions and most of the components are function based. 
+
+Component is basically a function which gives us JSX code to render.
+
+This is an example snippet for a component: 
+import React from 'react'
+
+const UserCard = () => {
+  return (
+    <div>
+      
+    </div>
+  )
+}
+
+export default UserCard
+
+If we look closely at this then we can observe that this is basically a function which is returning some HTML like code. To use this component elsewhere in the code, we have to export this component and then to use somewhere else we will import it there. 
+
+In JSX class is a reserved keyword and like we used to give class to a HTML tag, we can similarly use className in JSX and JS.
+
+Every component that we create, we will need to link the CSS file with JSX file which means we will have to import the CSS file inside the JSC file.
+
+Now in JSX observe that we have created a div after return, this means that div is the root tag and we cannot have more than 1 divs inside return. All code inside any component must be inside the same parent tag.
+
+Earlier we used this to create 3 cards:
+
+    <div className='container'>
+      <UserCard></UserCard>
+      <UserCard></UserCard>
+      <UserCard></UserCard>
+    </div>
+
+This code created 3 cards but then all the cards had the same information but what if we want to have different information in different cards? FOR THAT WE WILL USE PROPS.
+
+Suppose we send name and date as props (means data that we are sending) from A to B, then at B, we will access the data / props using props.name and props.date
+
+We name the UserCards:
+      <UserCard name="Noobie1"></UserCard>
+      <UserCard name="Noobie2"></UserCard>
+      <UserCard name="Noobie3"></UserCard>
+
+Then we will have to pass props as a parameter to the UserCard function and access it using the JS syntax {}:
+
+const UserCard = (props) => {
+  return (
+    <div className='user-container'>
+      <p id='user-name'>{props.name}</p>
+      <img src={opimg} alt="Noobie image" id='user-img'/>
+      <p id='user-desc'>Description of Noobie</p>
+    </div>
+  )
+}
+
+just like we are sending props.name, we can also send image and styling attributes as well.
