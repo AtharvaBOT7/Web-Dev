@@ -1,0 +1,34 @@
+Hook is a functionality like state management, handling complex logic etc etc. Basically hooks are used to hook onto the functionalities provided by React.
+
+************************************************************************************************************************************************************************************
+useState Hook:
+
+Every hook is prefixed with the word "use".
+Every component can maintain their own state. The state management feature is done by the useState hook.
+
+Inside the useState hook, we must maintain:
+1. state variable
+2. state function
+
+We define the useState hook with this command:
+const [count, setCount] = useState(0);
+where count is the name of the state variable and setCount is state function and useState(0) means that the initial state is 0.
+
+This is the counter program.
+const Counter = () => {
+    const [count, setCount] = useState(0);
+  return (
+    <div className='counter-container'>
+      <p id='para'>
+            You have clicked {count} times!
+      </p>
+      <button id='btn' onClick={() =>{
+        setCount(count+1)
+      }}>
+            Click Me!
+      </button>
+    </div>
+  )
+}
+
+Now wherever we use the count state variable in the entire code, the value will be updated.
