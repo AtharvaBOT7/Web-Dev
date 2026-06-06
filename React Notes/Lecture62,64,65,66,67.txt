@@ -1,3 +1,5 @@
+LECTURE 62:
+
 Hook is a functionality like state management, handling complex logic etc etc. Basically hooks are used to hook onto the functionalities provided by React.
 
 ************************************************************************************************************************************************************************************
@@ -32,3 +34,72 @@ const Counter = () => {
 }
 
 Now wherever we use the count state variable in the entire code, the value will be updated.
+************************************************************************************************************************************************************************************
+
+LECTURE 63:
+
+props means properties
+
+We will simply use this inside the Cards.jsx file:
+
+const Card = (props) => {
+  return (
+    <div>
+      My name is {props.name}
+    </div>
+  )
+}
+
+and have the following code inside the app.jsx file:
+
+function App() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <div>
+      <Card name="Noobie Godly"> 
+    
+      </Card>
+    </div>
+  )
+}
+
+But we have only used a single element inside the card component.
+
+What if we want mulitple elements / nested elements etc, we simply pass {props.children} this ensures that we are passing everything inside the Card component. 
+
+We can pass the values of variables inside the card tag.
+
+      <Card name="Noobie Godly"> 
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, dolorem! </h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium maiores dicta architecto sapiente nihil odio debitis dolorem aperiam mollitia doloribus?</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos, adipisci enim quibusdam dolore saepe ratione voluptates ducimus quia consequatur quos, dolor numquam exercitationem asperiores est nihil sint perspiciatis? Molestias, velit.</p>
+      </Card>
+
+Anything between the Card opening and closing tag is it's children. The use of this is if we do not know beforehand what content we will receive, then it is better to use children.
+
+We can have multiple Card functions, inside single app.jsx div tag.
+
+    <div>
+      <Card name="Noobie Godly"> 
+        <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, dolorem! </h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium maiores dicta architecto sapiente nihil odio debitis dolorem aperiam mollitia doloribus?</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos, adipisci enim quibusdam dolore saepe ratione voluptates ducimus quia consequatur quos, dolor numquam exercitationem asperiores est nihil sint perspiciatis? Molestias, velit.</p>
+      </Card>
+
+      <Card children="I am inside Card.children variable">
+        <br />
+        <h1>Hello how are you?</h1>
+      </Card>
+    </div>
+
+Now we have passed Card.children variable which means if we create a variable inside Card function / props, then the first priority will be given to the content present inside the opening and closing Card tags but if there is no content then we will see the variable value.
+
+
+We can also send a function inside a component, we are sending the handleClick function in this case:
+  function handleClick(){
+    setCount(count+1);
+  }
+      <Button incrementCount={handleClick}>
+
+      </Button>
