@@ -202,3 +202,20 @@ This will render the logout button only if the person is logged in.
   )
 
 In this code, if the person is not logged in, then he will see only a login button and if the person is logged in, then he will see the heading and the logout button.
+
+************************************************************************************************************************************************************************************
+LECTURE 67: EVENT HANDLING 
+
+ <button onClick={alert("I was clicked")}>
+      Click Me
+    </button>
+
+This is called immediate invocation which means that when we define the onClick function like this, then we are rendering the alert along with the button element and that is triggering the onClick event and generating the alert. The better way to solve immediate invocation is:
+
+    <button onClick={() => alert("I was clicked")}>
+      Click Me
+    </button>
+
+This will not invoke the code present inside the onClick event directly.
+
+We also use e.stoppropagation which means that the event will not move up in the phase, that means if we have multiple nested divs and all of them have an event defined and we dont want that event to propagate further in the DOM tree, then we will use the e.stoppropagation function.
