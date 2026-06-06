@@ -103,3 +103,32 @@ We can also send a function inside a component, we are sending the handleClick f
       <Button incrementCount={handleClick}>
 
       </Button>
+************************************************************************************************************************************************************************************
+LECTURE 65:
+
+STATELIFTING: Concept of defining the state variable inside the parent component and letting all / needed children of that parent acccess the state variable.
+
+PROPS ARE ALWAYS PASSED FROM PARENT TO CHILDREN. But what if we want to pass the data from children to parent?
+Suppose we have multiple children of the same parent, and if the children want to share state data in between themselves, then it will only be possible if one child can pass data to the parent which can then be accessed by the other child.
+
+The simple way to do it is by not letting the child maintain and create the state and let the Parent do all that work, so we will now create and maintain the state inside parent. Here inside the App component.
+
+<Card card1name={name} card1setName={setName}>
+
+Creating the Card component in this way will enable us to set the names and mantain the names individually for all the children components.
+
+We now updated the Card component to this:
+
+const Card = (props) => {
+  return (
+    <div>
+      <input type="text" onChange={(e) => props.setName(e.target.value)} />
+      <p>{props.name}</p>
+    </div>
+  )
+}
+
+what this means is that whenever we enter any value inside the text box, the setName function will be called and it will maintain the state i.e. change the name.
+
+This is the concept of Lifting State that means without defining the state variable inside child component, we define the state variable inside the parent component and this lets us access the state variable from any of the child components of that parent.
+
