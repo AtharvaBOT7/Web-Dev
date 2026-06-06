@@ -1,8 +1,7 @@
-LECTURE 62:
+LECTURE 62: Hooks
 
 Hook is a functionality like state management, handling complex logic etc etc. Basically hooks are used to hook onto the functionalities provided by React.
 
-************************************************************************************************************************************************************************************
 useState Hook:
 
 Every hook is prefixed with the word "use".
@@ -35,8 +34,7 @@ const Counter = () => {
 
 Now wherever we use the count state variable in the entire code, the value will be updated.
 ************************************************************************************************************************************************************************************
-
-LECTURE 63:
+LECTURE 63: State Lifting
 
 props means properties
 
@@ -132,3 +130,75 @@ what this means is that whenever we enter any value inside the text box, the set
 
 This is the concept of Lifting State that means without defining the state variable inside child component, we define the state variable inside the parent component and this lets us access the state variable from any of the child components of that parent.
 
+************************************************************************************************************************************************************************************
+LECTURE 66: Conditional Rendering
+
+We can do conditional rendering using these 4 cases:
+1. if-else 
+2. ternary operator
+3. logical operator
+4. early return
+
+1. IF-ELSE CONDITIONAL RENDERING:
+
+function App() {
+  const [isLoggedIn, setLoggedIn] = useState(false);
+
+  if (isLoggedIn){
+    return (
+        <LogoutButton>
+
+        </LogoutButton>
+    )
+  }
+  else{
+    return (
+      <LoginButton>
+
+      </LoginButton>
+    )
+  }
+}
+
+
+2. TERNARY OPERATOR:
+
+  return (
+    <div>
+      {isLoggedIn ? <LogoutButton /> : <LoginButton />}
+    </div>
+  )
+
+
+3. LOGICAL OPERATOR:
+
+  return (
+    <div>
+      <h1>Welcome to Noobie Godly's Website</h1>
+      <div>
+        {isLoggedIn && <LogoutButton />}
+      </div>
+    </div>
+  )
+
+This will render the logout button only if the person is logged in.
+
+
+4. EARLY RETURN:
+
+  if (!isLoggedIn){
+    return (
+      <LoginButton />
+    )
+  }
+
+  return (
+    <div>
+      <h1>Welcome to Noobie Godly's Website</h1>
+      <div>
+        {isLoggedIn && <LogoutButton />}
+      </div>
+    </div>
+  )
+
+In this code, if the person is not logged in, then he will see only a login button and if the person is logged in, then he will see the heading and the logout button.
