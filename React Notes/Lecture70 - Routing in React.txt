@@ -1,0 +1,183 @@
+There is a specific route for each page. Example:
+
+Landing page: www.noobie.com/
+About Noobie Godly Page: www.noobie.com/about-bot 
+like this
+
+************************************************************************************************************************************
+The createBrowserRouter takes an array of routes as an input:
+
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Home/>,
+    },
+    {
+      path: "/about",
+      element: <About />,
+    },
+    {
+      path: "/dahsboard",
+      element: <Dashboard />,
+    }
+  ]
+);
+
+and it is defined like this. And every route has a path parameter which routes to that particular path. 
+And this is how we create route.
+
+Steps to use the Create Browser Router:
+1. Import the createBrowserRouter hook
+2. Define the pages and routes
+3. The routes that we have created, we will have to provide context of those routes. That means we will have to let the browser know that if clicked on /about we have to direct on the About page.
+
+    <ul>
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li>
+            <a href="/about">About</a>
+        </li>
+        <li>
+            <a href="/dashboard">Dashboard</a>
+        </li>
+    </ul>
+
+We created a Navbar and inside the Navbar we have linked the Home, About and Dashboard pages, now the thing is we learnt at the beginning that React is used to create a single page application and we dont need to load the page but we observe that when we create a routing link using the anchor tag it will refresh the entire page. Therefore we will use the Link tag instead, the new code will be:
+
+    <ul>
+        <li>
+            <Link to="/">Home</Link>
+        </li>
+        <li>
+            <Link to="/about">About</Link>
+        </li>
+        <li>
+            <Link to="/dashboard">Dashboard</Link>
+        </li>
+      </ul>
+
+We can also use NavLink instead of just Link, the main advantage of NavLink is that we have an active class attached as NavLink 
+
+const Navbar = () => {
+  return (
+    <div>
+      <ul>
+        <li>
+            <NavLink to="/" className={({isActive}) => isActive ? "active-link" : ""}>
+                Home
+            </NavLink>
+        </li>
+        <li>
+            <NavLink to="/about" className={({isActive}) => isActive ? "active-link" : ""}>
+                About
+            </NavLink>
+        </li>
+        <li>
+            <NavLink to="/dashboard" className={({isActive}) => isActive ? "active-link" : ""}>
+                Dashboard
+            </NavLink>
+        </li>
+      </ul>
+    </div>
+  )
+}
+
+Now we have used NavLink param, because we have an in build variable called isActive which lets us know if the page is active right now or not.
+
+************************************************************************************************************************************
+
+Now we will learn about the useParameters hook.
+We have seen in many of the website links that we pass parameters inside the route, like www.noobie.com/3u834sdfs?rw09
+
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <div>
+        <Home />
+        <Navbar />
+      </div>,
+    },
+    {
+      path: "/about",
+      element: <div>
+        <About />
+        <Navbar />
+      </div>,
+    },
+    {
+      path: "/dashboard",
+      element: <div>
+        <Dashboard />
+        <Navbar />
+      </div>,
+    },
+    {
+      path: "/student/:id"
+    }
+  ]
+);
+
+See how we have defined the id route, "/:id" this means that the id is a parameter that will be passed along.
+
+************************************************************************************************************************************
+
+Now we will learn about useNavigation hook.
+
+const Home = () => {
+
+    const navigate = useNavigate();
+
+    function handleClick(){
+        navigate('/about');
+    }
+
+  return (
+    <div>
+      I am Home Page
+      <button onClick={handleClick}>
+        Go to About Page
+      </button>
+    </div>
+  )
+}
+
+Using the useNavigate hook we can move between pages easily.
+
+************************************************************************************************************************************
+
+Now we will learn about Nested Routing
+We can also create children, for example we have seen many routes like /dashboard/courses etc etc
+We can create that using children:
+
+{
+      path: "/dashboard",
+      element: <div>
+        <Dashboard />
+        <Navbar />
+      </div>,
+      children:[
+        {
+          path: 'courses',
+          element: <div>
+            <Courses />
+          </div>
+        },
+        {
+          path: 'mock-tests',
+          element: <div>
+            <MockTests />
+          </div>
+        },
+        {
+          path: 'reports',
+          element: <div>
+            <Reports />
+          </div>
+        }
+      ]
+}
+
+We will need to use an <Outlet /> param in the parent route to route the elements to render their child route elements.
