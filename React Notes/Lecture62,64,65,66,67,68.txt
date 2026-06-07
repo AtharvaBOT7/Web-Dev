@@ -223,7 +223,7 @@ This will not invoke the code present inside the onClick event directly.
 We also use e.stoppropagation which means that the event will not move up in the phase, that means if we have multiple nested divs and all of them have an event defined and we dont want that event to propagate further in the DOM tree, then we will use the e.stoppropagation function.
 
 ************************************************************************************************************************************************************************************
-LECTURE 67: USE EFFECT HOOK 
+LECTURE 68: USE EFFECT HOOK 
 
 useEffect hook: from the prefix use, we can make out that this is a React hook and we can generate side effect using this hook. 
 
