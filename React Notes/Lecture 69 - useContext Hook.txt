@@ -1,0 +1,69 @@
+PROP DRILLING:
+
+Suppose we have a hierarchy like Parent -> Child 1 -> Child 2 -> Child 3 
+Then if Child 3 wants to access some data from the Parent, then the data will be sent through Child 1 then Child 2 and then it will finally raech Child 3, in this process Child 1 and 2 received the data when they did not want to and this is called Prop Drilling.
+
+This is a wrong practice in production environment because the gap can be very large and it is not efficient to send data to the middleware if they dont have any use for it.
+
+This problem is solved using the useContext hook. 
+
+There are 3 steps in useContext:
+1. Create context 
+2. Provide 
+3. Consume
+
+// The hierarchy is Main -> App -> Child A -> Child B -> Child C 
+
+Now the simple way would be if the parent provides the context, then the child which requires that context can access / consume the context without the middleware getting disturbed.
+
+// Step 1: Create context syntax:
+const UserContext = createContext();
+
+// Step 2: Wrap all the children inside a provider
+// The children which wwe want to give the status of a consumer or the children which we want to access the data from the parent component will be listed down in this wrapper
+
+// Observe one more thing here, we have Child A inside the provider and Child B is a child of A and C is child of B thus all are indirectly wrapped inside the provider and any of the three children can become a consumer at any time.
+
+Code inside App.jsx:
+import { useState } from 'react'
+import './App.css'
+import { createContext } from 'react'
+import ChildA from './components/ChildA';
+
+const UserContext = createContext();
+
+function App() {
+  const [user, setUser] = useState({name: "noobie godly"});
+
+  return (
+    <div>
+      <UserContext.Provider value={user}>
+      <ChildA>
+
+      </ChildA>
+      </UserContext.Provider>
+    </div>
+  )
+}
+
+export default App
+export {UserContext} // It is very import to export the User Context.
+
+
+Code inside ChildC.jsx:
+import React from 'react'
+import { UserContext } from '../App'
+import { useContext } from 'react'
+
+const ChildC = () => {
+    const user = useContext(UserContext);
+  return (
+    <div>
+      hello {user.name}
+    </div>
+  )
+}
+
+export default ChildC
+
+
