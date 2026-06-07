@@ -1,3 +1,5 @@
+WE HAVE OBSERVED THAT THE WEBSITE RENDERS TWO TIMES, THIS IS BECAUSE IT IS CURRENTLY IN THE DEVELOPMENT PHASE AS WE CAN SEE STRICTMODE INSIDE main.jsx 
+
 LECTURE 62: Hooks
 
 Hook is a functionality like state management, handling complex logic etc etc. Basically hooks are used to hook onto the functionalities provided by React.
@@ -219,3 +221,108 @@ This is called immediate invocation which means that when we define the onClick 
 This will not invoke the code present inside the onClick event directly.
 
 We also use e.stoppropagation which means that the event will not move up in the phase, that means if we have multiple nested divs and all of them have an event defined and we dont want that event to propagate further in the DOM tree, then we will use the e.stoppropagation function.
+
+************************************************************************************************************************************************************************************
+LECTURE 67: USE EFFECT HOOK 
+
+useEffect hook: from the prefix use, we can make out that this is a React hook and we can generate side effect using this hook. 
+
+WHAT IS A SIDE EFFECT??
+For example listening to music at a high volume for long time / scrolling through screen for a long time which causes problems is called side effect.
+
+For example: One side effect can be whenever content of DOM is loaded, we can connect it to the DB.
+OR whenever the page is rendered, we can fetch some API. 
+
+Here loading of the page is an event and fetching some API is the side effect of that event.
+
+
+first -> Side effect function / logic (this is the side effect that is triggered when a specific event occurs)
+second -> Clean up function (for example cleaning up memory / free up space etc)
+third -> comma separated dependency list (this is the list of events / entities anf after these events are fulfilled, the side effect function is called.)
+
+    useEffect(() => {
+    first
+  
+    return () => {
+      second
+    }
+  }, [third])
+
+There can be many types of useEffect variations.
+
+
+VARIATION 1: Runs on every render
+  useEffect(() => {
+    alert("I will run on each render")
+  }) // this will run on every render
+
+
+
+  const [count, setCount] = useState(0);
+
+  // first -> Side effect function / logic (this is the side effect that is triggered when a specific event occurs)
+  // second -> Clean up function (for example cleaning up memory / free up space etc)
+  // third -> comma separated dependency list (this is the list of events / entities anf after these events are fulfilled, the side effect function is called.)
+
+  // useEffect(() => {
+  //   first
+  
+  //   return () => {
+  //     second
+  //   }
+  // }, [third])
+
+  // Variation 1: runs on every render
+  useEffect(() => {
+    alert("I will run on each render")
+  }) // this will run on every render
+
+  function handleClick() {
+    setCount(count+1);
+  }
+  
+  return (
+   <div>
+      Hello 
+      <button onClick={handleClick}>
+          Click Me
+      </button>
+      <br />
+      <p>
+        count is: {count}
+      </p>
+   </div>
+  )
+
+WE CAN SEE THAT WHENEVER WE CLICK ON THE BUTTON, BEFORE THE VALUE IS UPDATED THE USE EFFECT HOOK RUNS.
+
+
+  // Variation 2: Runs on first render only
+  useEffect(() => {
+    alert("I will run only on first render");
+  }, [])
+
+
+  // Variation 3: Only runs when value of count is updated
+  useEffect(() => {
+    alert("I will run only when count variable's value is updated");
+  }, [count])
+
+
+  // Variation 4: Multiple depenedencies
+    useEffect(() => {
+    alert("I render if total is updated or count is updated")
+  }, [count, total])
+
+
+  // Variation 5: This time we will also add a Clean Up function
+  useEffect(() => {
+    alert("Count is updated")
+  
+    return () => {
+      alert("Count is unmounted")
+    }
+  }, [count])
+
+In the variation 5, we can see that count is updated on the first render because we have set the value of count as 0 at the beginning. 
+Then everytime the value of count is updated, first the older count value is unmounted and then the value of count is updated.
