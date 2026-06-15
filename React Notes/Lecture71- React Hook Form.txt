@@ -1,0 +1,224 @@
+Whenever we want to create a form in React, we will use the React Hook Form because it gives us many out of the box funcitonalities. 
+
+we will need to install the node depenedencies using:
+npm i react-hook-form
+
+There are 3 steps to include a form in your react project:
+1. Form creation
+2. Adding the required fields (integrating and registering the fields so that whenever someone enters the data, we are able to capture it)
+3. What happens when we submit the form?
+
+We have created a basic form structure using this code:
+    <div>
+      <form>
+        <div>
+          <label> 
+            First Name:
+          </label>
+          <input type="text" />
+        </div>
+        <br />
+        <div>
+          <label> 
+            Middle Name:
+          </label>
+          <input type="text" />
+        </div>
+        <br />
+        <div>
+          <label> 
+            Last Name:
+          </label>
+          <input type="text" />
+        </div>
+      </form>
+    </div>
+
+but there is a major flaw in this we have still not linked any input values to the form. 
+
+function App() {
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  function onSubmit(data) {
+      console.log("Here is the input data: ");
+      console.log(data);
+  }
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <label> 
+            First Name:
+          </label>
+          <input type="text" {...register('firstName')} />
+        </div>
+        <br />
+        <div>
+          <label> 
+            Middle Name:
+          </label>
+          <input type="text" {...register('middleName')} />
+        </div>
+        <br />
+        <div>
+          <label> 
+            Last Name:
+          </label>
+          <input type="text" {...register('lastName')} />
+        </div>
+        <input type="submit" />
+      </form>
+    </div>
+  )
+}
+
+This is how we link the fields with input values and we also have created a submit button. Observe that we will need to have the following code in order to print the data on the console because this is how we will handle the submission of the form, using handleSubmit, it is responsibility of that function to give data to the form to be handled by the onSubmit function.
+
+const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+And now there is one more major flaw in this form, we can submit by keeping a few fields or all the fields empty as well which is not a good sign, so we will now need to apply validations on those fields:
+
+    <div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <label> 
+            First Name:
+          </label>
+          <input type="text" {...register('firstName', { required: true, maxLength: 20, minLength: 3 })} />
+        </div>
+        <br />
+        <div>
+          <label> 
+            Middle Name:
+          </label>
+          <input type="text" {...register('middleName', { required: false })} />
+        </div>
+        <br />
+        <div>
+          <label> 
+            Last Name:
+          </label>
+          <input type="text" {...register('lastName', { required: true, maxLength: 20, minLength: 3 })} />
+        </div>
+        <input type="submit" />
+      </form>
+    </div>
+
+This is how we will apply validations on the form submission.
+
+
+Now what if we want to display the errors, we use the errors.firstName to access the errors caused by the firstName field. 
+
+    <div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <label> 
+            First Name:
+          </label>
+          <input 
+          className={errors.firstName ? 'input-error': "" }
+          type="text" {...register('firstName', { 
+            required: true, 
+            maxLength: {value: 20, message:"Please enter less than 20 characters"}, 
+            minLength: {value: 3, message:"Please enter more than 3 characters"} 
+            })} />
+            {errors.firstName && <p className='error-msg'>{errors.firstName.message}</p>}
+        </div>
+        <br />
+        <div>
+          <label> 
+            Middle Name:
+          </label>
+          <input type="text" {...register('middleName', { required: false })} />
+        </div>
+        <br />
+        <div>
+          <label> 
+            Last Name:
+          </label>
+          <input type="text" {...register('lastName', { 
+            required: true, 
+            maxLength: {value: 20, message:"Please enter less than 20 characters"}, 
+            minLength: {value: 3, message:"Please enter more than 3 characters"} 
+            })} />
+            {errors.lastName && <p>{errors.lastName.message}</p>}
+        </div>
+        <input type="submit" />
+      </form>
+    </div>
+
+Now there is one more problem, if we click on submit button multiple times, then we are able to submit it many times which is wrong because we should only be able to send to the backend only once. 
+
+
+import './App.css'
+import { useForm } from 'react-hook-form';
+
+function App() {
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors, isSubmitting },
+  } = useForm();
+
+  async function onSubmit(data) {
+      await new Promise((resolve) => setTimeout(resolve, 5000));
+      console.log("Here is the input data: ");
+      console.log(data);
+  }
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <label> 
+            First Name:
+          </label>
+          <input 
+          className={errors.firstName ? 'input-error': "" }
+          type="text" {...register('firstName', { 
+            required: true, 
+            maxLength: {value: 20, message:"Please enter less than 20 characters"}, 
+            minLength: {value: 3, message:"Please enter more than 3 characters"} 
+            })} />
+            {errors.firstName && <p className='error-msg'>{errors.firstName.message}</p>}
+        </div>
+        <br />
+        <div>
+          <label> 
+            Middle Name:
+          </label>
+          <input type="text" {...register('middleName', { required: false })} />
+        </div>
+        <br />
+        <div>
+          <label> 
+            Last Name:
+          </label>
+          <input type="text" {...register('lastName', { 
+            required: true, 
+            maxLength: {value: 20, message:"Please enter less than 20 characters"}, 
+            minLength: {value: 3, message:"Please enter more than 3 characters"} 
+            })} />
+            {errors.lastName && <p>{errors.lastName.message}</p>}
+        </div>
+        <input type="submit" disabled={isSubmitting} value={isSubmitting ? "Submitting the Form" : "Submit"} />
+      </form>
+    </div>
+  )
+}
+
+export default App
