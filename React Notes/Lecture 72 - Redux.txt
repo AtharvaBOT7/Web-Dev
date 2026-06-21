@@ -1,0 +1,19 @@
+In redux, we maintain a centralized state which means that there is no need of prop drilling. 
+
+If ay child wants to access any property, it can access it from the centralized store. 
+Basic is, for example if we have a counter application, then it is mandatory to maintain a state, so what we do is define the state inside the centralized store and then whenever an action is performed on the UI, we make the updates to the centralized store and then again update the value on the UI so that the value is consistent throughout the page.
+
+Basic Lifecycle of Redux Toolkit:
+Lets take the same example of the click counter, we have a button and a counter which shows the number of times the button was clicked, so when we hit click we have an onClick event handler -> Suppose we have a handleClick function that executes -> Then an Action is Dispached -> This Action then goes to the Centralized Store -> The Centralized Store then calls the corresponding Reducer function -> The Reducer function then executes the Logic inside the Reducer function -> Then the store is updated to update the state value and then finally UI is updated to keep the value of the state consistent throughout the page.
+
+Important Terms in Redux:
+1. Action: An Action is just an object which may contain an event block or an event block along with some additonal information (like payload).
+
+2. Reducer: To understand about Reducer, we must first understand about Slice. Basically Reducers are just functions which have the logic to update the state in case of any event.
+
+3. Slice: An application may have multiple features like login, log out, etc etc, the logic to maintain the state associated with each and every feature is defined in the Slice like initial state value, what happens in case of an event etc etc, this all is handled by Slice. The main thing is all the Reducer functions too are defined inside the Slice.
+
+4. Store: A Centralized Store for the state.
+
+5. State: The data that is maintained in easy words.
+
